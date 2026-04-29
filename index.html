@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="dark">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="dark light" />
+  <meta name="description" content="성나영 · 이력서 및 포트폴리오" />
+  <title>성나영 · 이력서 & 포트폴리오</title>
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem("theme");
+        if (t !== "light" && t !== "dark") {
+          t = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        }
+        document.documentElement.setAttribute("data-theme", t);
+      } catch (e) {
+        document.documentElement.setAttribute("data-theme", "dark");
+      }
+    })();
+  </script>
+  <style>
+    /*
+     * 로컬에서 index.html 을 file:// 로만 열면 <use href="icons/…"> 가 차단되는 경우가 많음.
+     * 미리보려면 같은 폴더에서 npx serve . 등으로 http 로 띄우면 됨.
+     */
+    :root {
+      --font: "Pretendard Variable", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+    }
+
+    html[data-theme="dark"] {
+      color-scheme: dark;
+      --bg: #0f1419;
+      --text: #e8eaed;
+      --muted: #9aa5b1;
+      --link: #7eb8f0;
+      --link-hover: #a8d4ff;
+      --accent: #fafcff;
+      --accent-soft: rgba(69, 212, 214, 0.14);
+      --border: rgba(255, 255, 255, 0.08);
+      --th-bg: rgba(255, 255, 255, 0.04);
+    }
+
+    html[data-theme="light"] {
+      color-scheme: light;
+      --bg: #f2f5f9;
+      --text: #141a21;
+      --muted: #556070;
+      --link: #1567c4;
+      --link-hover: #0e5199;
+      --accent: #153348;
+      --accent-soft: rgba(21, 51, 72, 0.1);
+      --border: rgba(0, 0, 0, 0.1);
+      --th-bg: rgba(0, 0, 0, 0.05);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      cursor: default;
+    }
+
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      font-size: 16px;
+      min-height: 100vh;
+    }
+
+    a {
+      color: var(--link);
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: var(--link-hover);
+      text-decoration: underline;
+    }
+
+    .page {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem 4rem;
+    }
+
+    header {
+      margin-bottom: 2.5rem;
+    }
+
+    .masthead {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.65rem 1rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .theme-picker {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.5rem 0.75rem;
+    }
+
+    .theme-picker__switch {
+      display: inline-flex;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .theme-picker__btn {
+      font: inherit;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 2.35rem;
+      height: 2.35rem;
+      padding: 0;
+      border: none;
+      background: transparent;
+      color: var(--muted);
+      cursor: pointer;
+      transition: background 0.15s ease, color 0.15s ease;
+    }
+
+    .theme-picker__btn svg.theme-picker__icon {
+      flex-shrink: 0;
+      pointer-events: none;
+      display: block;
+    }
+
+    .theme-picker__btn:hover {
+      color: var(--text);
+      background: var(--accent-soft);
+    }
+
+    .theme-picker__btn[aria-pressed="true"] {
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 0;
+      font-size: 0.75rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    h1 {
+      font-size: clamp(1.75rem, 4vw, 2.25rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+    }
+
+    .lead {
+      color: var(--muted);
+      font-size: 1.05rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .contact {
+      display: flex;
+      gap: 0.75rem;
+      margin-bottom: 1.25rem;
+      font-size: 0.92rem;
+      color: var(--muted);
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem 1.1rem;
+    }
+
+    nav a {
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+
+    nav a:hover {
+      color: var(--link-hover);
+    }
+
+    .principles {
+      margin-bottom: 1.5rem;
+    }
+
+    .principles-list,
+    ul.list-dot,
+    ol.list-num ul {
+      list-style: none;
+    }
+
+    .principles-list>li {
+      position: relative;
+      padding-left: 1.1rem;
+      margin-bottom: 0.65rem;
+      font-size: 0.95rem;
+      line-height: 1.55;
+    }
+
+    .principles-list>li:last-child,
+    ol.list-num>li:last-child {
+      margin-bottom: 0;
+    }
+
+    .principles-list>li::before,
+    ol.list-num ul li::before,
+    .list-dot li::before {
+      content: "·";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+    }
+
+    section {
+      margin-bottom: 2.75rem;
+    }
+
+    section:last-of-type {
+      margin-bottom: 0;
+    }
+
+    h2 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 1rem;
+      letter-spacing: -0.01em;
+    }
+
+    h3,
+    h4 {
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    h3 {
+      font-size: 1.02rem;
+      margin-bottom: 0.35rem;
+    }
+
+    h4 {
+      font-size: 0.98rem;
+      margin: 1.25rem 0 0.5rem;
+    }
+
+    h4:first-child {
+      margin-top: 0;
+    }
+
+    p {
+      margin-bottom: 0.85rem;
+      color: var(--text);
+    }
+
+    p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* 기간·날짜 한 줄 (타임라인) — 부제 톤 */
+    .duration {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 0.75rem;
+    }
+
+    /* 경력: 회사명 아래 직무 · 재직 기간 한 줄 */
+    .role-line {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 0;
+    }
+
+    .entry {
+      margin-bottom: 2.5rem;
+      padding-bottom: 2.5rem;
+    }
+
+    .job-head>h3 {
+      margin-bottom: 0.25rem;
+    }
+
+    .job-head>.role-line {
+      margin-bottom: 0;
+    }
+
+    .job-segment {
+      margin-top: 1.85rem;
+    }
+
+    .job-segment:first-of-type {
+      margin-top: 0.85rem;
+    }
+
+    .job-lead {
+      font-size: 0.92rem;
+      color: var(--muted);
+      margin-bottom: 0.75rem;
+    }
+
+    .job-segment .list-dot+.job-lead {
+      margin-top: 1rem;
+    }
+
+    ol.list-num {
+      list-style: decimal;
+      padding-left: 1.35rem;
+      margin: 0.5rem 0 0;
+    }
+
+    ol.list-num>li {
+      margin-bottom: 1rem;
+      padding-left: 0.35rem;
+      color: var(--text);
+    }
+
+    ol.list-num ul {
+      margin: 0.45rem 0 0;
+    }
+
+    ol.list-num ul li,
+    .list-dot li {
+      position: relative;
+      font-size: 0.92rem;
+      color: var(--muted);
+    }
+
+    ol.list-num ul li {
+      padding-left: 1rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .list-dot li {
+      padding-left: 1.1rem;
+      margin-bottom: 0.55rem;
+    }
+
+    ul.list-dot {
+      margin: 0.5rem 0 0;
+    }
+
+    .tag-row {
+      margin-top: 0.65rem;
+    }
+
+    .tag {
+      display: inline-block;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 0.78rem;
+      padding: 0.18rem 0.5rem;
+      border-radius: 999px;
+      margin: 0 0.35rem 0.35rem 0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+      margin-top: 0.5rem;
+    }
+
+    th,
+    td {
+      border: 1px solid var(--border);
+      padding: 0.55rem 0.65rem;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: var(--th-bg);
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    td {
+      color: var(--muted);
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      margin-bottom: 1.25rem;
+    }
+
+    .table-wrap:last-child {
+      margin-bottom: 0;
+    }
+
+    .table-caption,
+    .skills-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .table-caption {
+      margin-bottom: 0.5rem;
+    }
+
+    .skills-title {
+      margin: 1rem 0 0.5rem;
+    }
+
+    .skills-title:first-child {
+      margin-top: 0;
+    }
+
+    .title-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 0.35rem 0.75rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .title-row h3 {
+      margin-bottom: 0;
+    }
+
+    .title-row p {
+      margin-bottom: 0;
+    }
+
+    footer {
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.85rem;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    strong {
+      font-weight: 600;
+      color: var(--text);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <header>
+      <div class="masthead">
+        <p class="eyebrow">Resume / Portfolio</p>
+        <div class="theme-picker" role="group" aria-label="화면 테마">
+          <div class="theme-picker__switch">
+            <button type="button" id="theme-btn-light" class="theme-picker__btn" aria-pressed="false"
+              aria-label="라이트 모드">
+              <svg class="theme-picker__icon" width="18" height="18" aria-hidden="true" focusable="false">
+                <use href="icons/theme-icons.svg#theme-sun" />
+              </svg>
+            </button>
+            <button type="button" id="theme-btn-dark" class="theme-picker__btn" aria-pressed="true" aria-label="다크 모드">
+              <svg class="theme-picker__icon" width="18" height="18" aria-hidden="true" focusable="false">
+                <use href="icons/theme-icons.svg#theme-moon" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+      <h1>성나영</h1>
+      <p class="lead">Problem Solver with AI, Web
+        <br>
+        사용자에게 필요한 것은 무엇인가에서부터 시작하여 개발합니다.
+      </p>
+      <p class="contact">
+        <a href="mailto:snycandoit@gmail.com">snycandoit@gmail.com</a>
+        |
+        <a href="https://github.com/sna0e" target="_blank" rel="noopener noreferrer">GitHub</a>
+        |
+        <a href="https://www.linkedin.com/in/nayoungs/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        |
+        <a href="https://sna0e.tistory.com/" target="_blank" rel="noopener noreferrer">Blog</a>
+      </p>
+
+      <div id="principles" class="principles">
+        <ul class="principles-list">
+          <li>사용자의 실제 행동과 맥락을 분석해 문제를 정의합니다.</li>
+          <li>기술, 사용자 경험, 비즈니스 맥락을 함께 고려해 구현합니다.</li>
+          <li>팀원들과 함께 논의하고 공유하며 더 완성도 높은 서비스를 만듭니다.</li>
+          <li>어제보다 나은 질문을 하기 위해 고민하며, 자신의 성장이 팀의 성과로 이어지길 기대합니다.</li>
+          <li>AI를 탐색과 실험의 속도를 높이는 도구로 활용해 기술과 도메인 한계를 넘어섭니다.</li>
+        </ul>
+      </div>
+
+      <nav aria-label="페이지 내 이동">
+        <a href="#experience">경력</a>
+        <a href="#side-projects">사이드 프로젝트</a>
+        <a href="#activities">활동</a>
+        <a href="#skills">역량</a>
+        <a href="#certs">자격증 · 수상</a>
+        <a href="#education">학력</a>
+      </nav>
+    </header>
+
+    <section id="experience">
+      <h2>경력</h2>
+      <article class="entry">
+        <header class="job-head">
+          <h3>NURIE AI (주)누리에에이아이</h3>
+          <p class="role-line">Software Engineer · 2025. 03. ~ 재직중</p>
+        </header>
+
+        <div class="job-segment">
+          <h4>
+            <a href="https://briefing.nurie.ai/ko" target="_blank" rel="noopener noreferrer">BriefingHub</a>
+            : AI 기반 뉴스 분석 및 브랜드 인식 모니터링 플랫폼
+          </h4>
+          <ol class="list-num">
+            <li>
+              <strong>TanStack Query 및 Suspense 도입을 통한 비동기 처리 구조 재설계</strong>
+              <a href="https://sna0e.tistory.com/15" target="_blank" rel="noopener noreferrer">(관련 경험 정리)</a>
+              <ul>
+                <li>useEffect + Zustand 기반 수동 API 호출 구조에서 동일 요청 중복, AbortController 직접 관리, 분산된 isLoading 처리로 비동기 로직이 UI에
+                  과도하게 결합되는 문제 발생.</li>
+                <li>서버 상태를 TanStack Query로 일원화하고 클라이언트 상태(Zustand)와 역할 분리. Suspense·ErrorBoundary로 로딩·에러 처리를 선언적으로 위임.
+                </li>
+                <li>데이터 fetching 책임을 컴포넌트 밖으로 분리해 보일러플레이트 제거, 로딩/에러/No Data 처리 통일 및 중복 요청 제어로 예측 가능한 비동기 흐름 확보.</li>
+              </ul>
+            </li>
+            <li>
+              <strong>API 변경에 강한 Type-Safe 프론트엔드 데이터 계층 설계</strong>
+              <ul>
+                <li>초기 서비스 단계에서 API 스펙 변경이 잦아 UI 컴포넌트 수정 비용이 지속 발생.</li>
+                <li>API 응답과 UI 모델 decoupling을 위해 Service Layer에 데이터 변환 구조 설계.</li>
+                <li>API 인터페이스와 UI 모델 분리, TypeScript 기반 정적 분석 환경 강화.</li>
+                <li>API 스펙 변경 시 UI 코드 수정 범위 약 80% 단축(5개 파일 → 1개 파일), 유지보수 비용 축소 및 런타임 타입 오류 방지.</li>
+              </ul>
+            </li>
+            <li>
+              <strong>SSE 스트리밍 도입을 통한 체감 성능 및 대기 시간 개선</strong>
+              <ul>
+                <li>AI 분석 특성상 최종 결과까지 평균 26.4초 소요, 장시간 Skeleton으로 사용자 이탈 문제 발생.</li>
+                <li>SSE 기반 단계별 데이터 스트림 규격 제안, 수신 데이터 단계별 Incremental Rendering 구현.</li>
+                <li>첫 유효 결과 노출 시점 약 80% 단축(26.4초 → 5.3초), 전체 결과 로드 전 콘텐츠 소비 가능한 UX.</li>
+              </ul>
+            </li>
+            <li>
+              <strong>AEO/GEO 분석 보고서 기능 설계 및 구현</strong>
+              <ul>
+                <li>브랜드 AEO/GEO 정량 확인 요구를 발굴했으나 기존에는 데이터 추출·개인화 저장 로직 부재.</li>
+                <li>기능 정의부터 데이터 흐름 설계까지 주도, 인사이트 추출용 프롬프트 엔지니어링 및 Firebase 기반 사용자별 데이터 영속화 구현.</li>
+                <li>배포 후 전체 데모 문의의 80%가 해당 기능에 집중, 제품 차원의 핵심 가치로 자리매김.</li>
+              </ul>
+            </li>
+          </ol>
+        </div>
+
+        <div class="job-segment">
+          <h4>BriefingHub Extension : SNS 및 커뮤니티 내 브랜드 인식 모니터링 확장 프로그램</h4>
+          <ol class="list-num">
+            <li>
+              <strong>브라우저 자원 활용을 통한 데이터 수집 비용 Zero화</strong>
+              <ul>
+                <li>SNS 모니터링 API 비용이 초기 유저 테스트 단계에서 비즈니스 확장 제약 요인으로 작용.</li>
+                <li>API 호출 대신 사용자 브라우저 자원을 활용하는 Chrome Extension 아키텍처 제안.</li>
+                <li>Manifest V3 기반 service worker와 content script 간 통신 구조 설계.</li>
+                <li>데이터 수집 운영 비용 100% 절감(Zero Cost), 기능 유지하며 시장성 검증 기반 마련.</li>
+              </ul>
+            </li>
+            <li>
+              <strong>전역 Error Handler 설계로 인증 실패 복구 UX 개선</strong>
+              <ul class="list-dot">
+                <li>인증 오류(401, 403) 대응 로직 분산, Alert 방식으로 서비스 중단처럼 인식되는 UX 문제.</li>
+                <li>싱글톤 기반 전역 Error Handler 설계 및 인증 Context 연동.</li>
+                <li>인증 실패 시 로그인 오버레이 자동 트리거.</li>
+                <li>12개 파일에 분산된 중복 로직 약 40% 제거, 다음 행동을 안내하는 UX 제공.</li>
+              </ul>
+            </li>
+            <li>
+              <strong>브라우저 런타임 제어를 통한 데이터 수집 안전성 확보</strong>
+              <ul class="list-dot">
+                <li>탭 기반 스크래핑 중 탭 종료·확장 프로그램 중단 시 데이터 유실 및 리소스 누수.</li>
+                <li>Chrome Extension API로 확장 프로그램과 탭 생명주기 제어 모듈 설계.</li>
+                <li>비정상 종료 방어 및 자동 회수 로직으로 안정성 강화.</li>
+                <li>데이터 수집 성공률 개선 및 탭 자원 회수율 90% 이상 안정적 확보.</li>
+              </ul>
+            </li>
+          </ol>
+        </div>
+      </article>
+    </section>
+
+    <section id="side-projects">
+      <h2>사이드 프로젝트</h2>
+
+      <article class="entry">
+        <h3>baby24</h3>
+        <p class="duration">2025. 01. ~ 2025. 05.</p>
+        <h5>배리어 프리(Barrier-free) 영아기 수면 실시간 모니터링 앱 · Google Solution Challenge 출품</h5>
+        <ul class="list-dot">
+          <li>문제 정의: 별도 장비·모바일 알람 중심 설계로 양육자의 장애 유무 고려 부족 및 접근성 제약.</li>
+          <li>WebRTC 기반 P2P 실시간 영상 전송 구조 설계 및 Flutter 앱 구현.</li>
+          <li>Firebase Realtime DB Signaling에서 Offer/Answer 동기화 지연·충돌 → Socket.IO 기반 단방향 Signaling Server로 재설계해 연결 안정성
+            확보.</li>
+          <li>Vertex AI 연동 영상 스냅샷 기반 얼굴 감지 및 위기 알림 파이프라인 구축.</li>
+          <li>위기 감지 이벤트 기반 Google Home API 연동으로 가정 내 스마트 디바이스 알림 채널 확장.</li>
+        </ul>
+        <p class="tag-row">
+          <span class="tag">Flutter</span>
+          <span class="tag">Node.js</span>
+          <span class="tag">Socket.IO</span>
+          <span class="tag">Vertex AI</span>
+          <span class="tag">WebRTC</span>
+        </p>
+      </article>
+
+      <article class="entry">
+        <h3>ai-pass</h3>
+        <p class="duration">2023. 09. ~ 2024. 12.</p>
+        <h5>실시간 여권 사진 규정 검증 웹 서비스</h5>
+        <ul class="list-dot">
+          <li>문제 정의: 외교부 온라인 검증은 업로드 기반으로 실시간 피드백 불가, 사용 가능 사진 오검출 존재.</li>
+          <li>카메라 → Canvas → Base64 → Socket.IO → 서버 검증 → UI 체크리스트 단방향 데이터 흐름 설계.</li>
+          <li>서버 응답 배열 직접 정렬로 상태 불일치 → 불변성 기반 상태 관리로 개선.</li>
+          <li>Base64를 URL로 전달하며 414(URI Too Long) → Body/FormData 기반 전송으로 재설계.</li>
+          <li>외교부 서비스 대비 약 20% 높은 정확도(50개 여권 사진 테스트 기준).</li>
+          <li>촬영부터 구청 방문 후 규정 검증까지 평균 8~10초로 단축.</li>
+        </ul>
+        <p class="tag-row">
+          <span class="tag">axios</span>
+          <span class="tag">Context API</span>
+          <span class="tag">Figma</span>
+          <span class="tag">GitHub Actions</span>
+          <span class="tag">React</span>
+          <span class="tag">Socket.IO</span>
+          <span class="tag">styled-components</span>
+          <span class="tag">TypeScript</span>
+          <span class="tag">Turborepo</span>
+          <span class="tag">Vercel</span>
+          <span class="tag">Vite</span>
+        </p>
+      </article>
+
+      <article class="entry">
+        <h3>Litera-sea</h3>
+        <p class="duration">2024. 01. ~ 2024. 02.</p>
+        <h5>Google Vertex AI 기반 문해력 향상 지원 웹 · Google Solution Challenge 출품</h5>
+        <ul class="list-dot">
+          <li>문제 정의: 기존 문해력 평가는 단일 점수 제공으로 세부 약점 파악 한계.</li>
+          <li>점수를 6개 세부 영역으로 구분·시각화하는 설명 가능한 평가 UX.</li>
+          <li>Vertex AI 프롬프트 설계·파인튜닝으로 평가 일관성 개선, 엔드포인트–서버 통신 구조 설계.</li>
+          <li>Stage 도메인 기준 구조 재정비 및 공통 컴포넌트 추출로 중복 UI 제거·코드 일관성 확보.</li>
+          <li>Path alias 및 strict TypeScript로 import 일관성·타입 안정성 확보.</li>
+        </ul>
+        <p class="tag-row">
+          <span class="tag">Figma</span>
+          <span class="tag">React</span>
+          <span class="tag">styled-components</span>
+          <span class="tag">Vertex AI</span>
+          <span class="tag">Vite</span>
+        </p>
+      </article>
+    </section>
+
+    <section id="activities">
+      <h2>활동</h2>
+
+      <article class="entry">
+        <h3>Google Developer Groups on Campus Soongsil</h3>
+        <p class="duration">2023. 09 ~ 2025. 09</p>
+        <h5>4기 DevRel · 3기 AI/ML 파트 멤버</h5>
+        <ul class="list-dot">
+          <li>최신 기술 트렌드 공유·성장을 목표로 스터디 기획·운영(NLP, 영어 회화).</li>
+          <li>풀스택(FYT), CS 리마인드 스터디, Google Cloud Skill Boost로 프론트·백엔드·인프라 이해 확장.</li>
+          <li>행사·커뮤니티 이벤트 기획·운영으로 다양한 배경 개발자와 협업·커뮤니케이션.</li>
+        </ul>
+        <h5>Solution Challenge (2024, 2025)</h5>
+        <ul class="list-dot">
+          <li>SDGs 기반 사회 문제 해결을 위한 서비스 아키텍처 기획·설계·구현.</li>
+        </ul>
+      </article>
+
+      <article class="entry">
+        <h3>2023 숭실대학교 실리콘밸리 AI 온라인 인턴십 프로그램 2기</h3>
+        <p class="duration">2023. 08. 28. ~ 2023. 08. 30.</p>
+        <h5>예측형 AI와 생성형 AI를 활용한 서비스 아이디어 기획</h5>
+        <ul class="list-dot">
+          <li><a
+              href="https://scatch.ssu.ac.kr/%eb%89%b4%ec%8a%a4%ec%84%bc%ed%84%b0/%ec%a0%84%ec%b2%b4/?type=major-news&amp;slug=%EB%B3%B8%EA%B5%90-ai%EC%9C%B5%ED%95%A9%EC%97%B0%EA%B5%AC%EC%9B%90-2023-%EC%8B%A4%EB%A6%AC%EC%BD%98%EB%B0%B8%EB%A6%AC-ai%EC%98%A8%EB%9D%BC%EC%9D%B8-%EC%9D%B8%ED%84%B0%EC%8B%AD-%ED%94%84&f&amp;keyword"
+              target="_blank" rel="noopener noreferrer">2기 대표팀 선정</a></li>
+        </ul>
+      </article>
+    </section>
+
+    <section id="skills">
+      <h2>역량</h2>
+
+      <div class="skills">
+        <p class="skills-title">Technology</p>
+        <ul class="list-dot">
+          <li><strong>Core:</strong> Next.js, React, TypeScript</li>
+          <li><strong>State &amp; Data:</strong> Chrome Storage API, Context API, JWT, OAuth (Google), REST API,
+            TanStack Query, Zustand</li>
+          <li><strong>Auth:</strong> JWT, OAuth (Google)</li>
+          <li><strong>AI:</strong> LLM Fine-tuning (OpenAI, Vertex AI), Prompt Design</li>
+          <li><strong>UI &amp; UX:</strong> Figma, next-intl, PostCSS, react-hook-form, Recharts, styled-components,
+            Tailwind CSS</li>
+          <li><strong>DevOps:</strong> AWS (learning), GitHub Actions (CI/CD)</li>
+        </ul>
+
+        <p class="skills-title">Product Execution</p>
+        <ul class="list-dot">
+          <li>새 요구사항에서 재사용 가능한 로직을 우선하고 변경 범위를 최소화하는 방식으로 기획·구현.</li>
+          <li>요구사항을 구현하기 전 사용 맥락과 실제 흐름으로 문제를 재정의한 뒤 서비스 구조 설계.</li>
+          <li>단기 실행 계획 수립, 개발·협업·안정화를 고려해 수주 내 해결 목표로 일정 조율.</li>
+          <li>배포 후 피드백을 반영해 구조·인터페이스를 지속 개선.</li>
+        </ul>
+
+        <p class="skills-title">Communication</p>
+        <ul class="list-dot">
+          <li>제안·아이디어를 Figma 목업과 API 데이터 구조를 포함한 문서로 정리해 공유.</li>
+          <li>충분한 시도 후 질문하며, 질문 시 현재 상황·가설·목표를 정리해 공유.</li>
+          <li>디자이너와 협업 시 화면·UX 맥락과 함께 구현 관점의 제약·가능성 설명.</li>
+          <li>영어 기본 커뮤니케이션 가능, 글로벌 협업 경험.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="certs">
+      <h2>자격 · 수상</h2>
+
+      <div class="table-wrap">
+        <p class="table-caption">자격증</p>
+        <table>
+          <thead>
+            <tr>
+              <th>이름</th>
+              <th>점수</th>
+              <th>일시</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>TOPCIT</td>
+              <td>560점 / 3급</td>
+              <td>2023. 10.</td>
+            </tr>
+            <tr>
+              <td>TOEIC Speaking</td>
+              <td>160 / AL</td>
+              <td>2023. 03.</td>
+            </tr>
+            <tr>
+              <td>TOEFL</td>
+              <td>80 (My Best Score)</td>
+              <td>2023. 06.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="table-wrap">
+        <p class="table-caption">수상</p>
+        <table>
+          <thead>
+            <tr>
+              <th>내역</th>
+              <th>역할</th>
+              <th>일시</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>2021 숭실대학교 컴퓨터학부 소프트웨어 공모전, 금상</td>
+              <td>사용자 포즈 추정 AI 모델 및 웹앱(pwa) 페이지 개발</td>
+              <td>2021. 08.</td>
+            </tr>
+            <tr>
+              <td>2022 클라우드 이노베이션 컨테스트 — 클라우드를 부탁해, 4등</td>
+              <td>Google Apps Script·Workspace로 동아리 Student Office Service 웹 개발</td>
+              <td>2022. 03.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="education">
+      <h2>학력</h2>
+
+      <article class="entry">
+        <h3>숭실대학교</h3>
+        <p class="duration">2020. 03. ~ 2026. 02.</p>
+        <p>소프트웨어학부 (학사) · 융합전공: 빅데이터</p>
+        <p>학점 3.97 / 4.5</p>
+      </article>
+      <article class="entry">
+        <div class="title-row">
+          <h3>Technical University of Braunschweig</h3>
+          <p>Braunschweig, Germany</p>
+        </div>
+        <p class="duration">2024. 04. 01. ~ 2024. 08. 23.</p>
+        <p>Informatik (Computer Science), Bachelor</p>
+        <p>학점 2.35 / 1.0 (1.0 = Very Good, 5.0 = Fail)</p>
+        <ul class="list-dot">
+          <li>Introduction of Machine Learning</li>
+          <li>Pattern Recognition (Master)</li>
+        </ul>
+      </article>
+      <article class="entry">
+        <div class="title-row">
+          <h3>University of Southern California</h3>
+          <p>Los Angeles, CA, U.S.</p>
+        </div>
+        <p class="duration">2023. 07. 02. ~ 2023. 07. 29.</p>
+        <p>숭실대 스파르탄교육원 및 USC 주관 SW Summit Camp 글로벌 연수</p>
+        <ul class="list-dot">
+          <li>Data Science &amp; Artificial Intelligence</li>
+          <li>Southern California Korean American Software Pioneer Hackathon</li>
+        </ul>
+      </article>
+    </section>
+
+    <footer>
+      © <span id="y"></span> · 성나영 (sna0e) · GitHub Pages
+    </footer>
+  </div>
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+
+    (function () {
+      function applyTheme(theme) {
+        if (theme !== "light" && theme !== "dark") return;
+        document.documentElement.setAttribute("data-theme", theme);
+        try {
+          localStorage.setItem("theme", theme);
+        } catch (e) { }
+        var lightBtn = document.getElementById("theme-btn-light");
+        var darkBtn = document.getElementById("theme-btn-dark");
+        if (lightBtn && darkBtn) {
+          lightBtn.setAttribute("aria-pressed", theme === "light" ? "true" : "false");
+          darkBtn.setAttribute("aria-pressed", theme === "dark" ? "true" : "false");
+        }
+      }
+
+      applyTheme(document.documentElement.getAttribute("data-theme") || "dark");
+
+      var btnLight = document.getElementById("theme-btn-light");
+      var btnDark = document.getElementById("theme-btn-dark");
+      if (btnLight) btnLight.addEventListener("click", function () { applyTheme("light"); });
+      if (btnDark) btnDark.addEventListener("click", function () { applyTheme("dark"); });
+    })();
+  </script>
+</body>
+
+</html>
