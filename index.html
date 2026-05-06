@@ -226,7 +226,7 @@
     }
 
     section {
-      margin-bottom: 2.75rem;
+      margin-bottom: 4rem;
     }
 
     section:last-of-type {
@@ -563,7 +563,7 @@
               <strong>API 변경에 강한 Type-Safe 프론트엔드 데이터 계층 설계</strong>
               <ul>
                 <li>초기 서비스 단계에서 API 스펙 변경이 잦아 UI 컴포넌트 수정 비용이 지속 발생.</li>
-                <li>API 응답을 Service Layer에서 변환하여 UI 모델과의 결합도를 낮추고, TypeScript 기반의 정적 타입 분석을 강화.</li>
+                <li>API 응답을 Service Layer에서 변환하여 UI 모델과의 결합도를 낮추고, TypeScript 기반의 정적 타입 분석 강화.</li>
                 <li>API 스펙 변경 시 UI 코드 수정 범위 약 80% 단축(5개 파일 → 1개 파일), 유지보수 비용 축소 및 런타임 타입 오류 방지.</li>
               </ul>
             </li>
@@ -572,7 +572,7 @@
               <ul>
                 <li>AI 분석 특성상 최종 결과까지 평균 26.4초 소요, 장시간 Skeleton으로 사용자 이탈 문제 발생.</li>
                 <li>SSE 기반 단계별 데이터 스트림 규격 제안, 수신 데이터 단계별 Incremental Rendering 구현.</li>
-                <li>첫 유효 결과 노출 시점 약 80% 단축(26.4초 → 5.3초), 전체 결과 로드 전 콘텐츠 소비 가능한 UX 달성.</li>
+                <li>첫 유효 결과 노출 시점 약 80% 단축, 전체 결과 로드 전 콘텐츠 소비 가능한 UX 달성.</li>
               </ul>
             </li>
             <li>
@@ -613,7 +613,7 @@
                 <li>탭 기반 스크래핑 중 탭 종료·확장 프로그램 중단 시 데이터 유실 및 리소스 누수.</li>
                 <li>Chrome Extension API로 확장 프로그램과 탭 생명주기 제어 모듈 설계.</li>
                 <li>비정상 종료 방어 및 자동 회수 로직으로 안정성 강화.</li>
-                <li>데이터 수집 성공률 개선 및 탭 자원 회수율 90% 이상 안정적 확보.</li>
+                <li>데이터 수집 성공률 개선 및 탭 자원 회수율 90% 이상 확보.</li>
               </ul>
             </li>
           </ol>
@@ -630,7 +630,7 @@
         <ul class="list-dot">
           <li>문제 정의: 별도 장비·모바일 알람 중심 설계로 양육자의 장애 유무 고려 부족 및 접근성 제약.</li>
           <li>WebRTC 기반 P2P 실시간 영상 전송 구조 설계 및 Flutter 앱 구현.</li>
-          <li>Firebase Realtime DB Signaling에서 Offer/Answer 동기화 지연·충돌 → Socket.IO 기반 단방향 Signaling Server로 재설계해 연결 안정성
+          <li>Firebase Realtime DB Signaling에서 Offer/Answer 동기화 지연·충돌 문제를 Socket.IO 기반 단방향 Signaling Server로 재설계해 연결 안정성
             확보.</li>
           <li>Vertex AI 연동 영상 스냅샷 기반 얼굴 감지 및 위기 알림 파이프라인 구축.</li>
           <li>위기 감지 이벤트 기반 Google Home API 연동으로 가정 내 스마트 디바이스 알림 채널 확장.</li>
@@ -651,7 +651,7 @@
         <ul class="list-dot">
           <li>문제 정의: 외교부 온라인 검증은 업로드 기반으로 실시간 피드백 불가, 사용 가능 사진 오검출 존재.</li>
           <li>서버 응답 배열 직접 정렬로 상태 불일치를 불변성 기반 상태 관리로 개선.</li>
-          <li>Base64를 URL로 전달하며 414(URI Too Long) → Body/FormData 기반 전송으로 재설계.</li>
+          <li>Base64를 URL로 전달하며 414(URI Too Long) 에러를 Body/FormData 기반 전송으로 재설계해 해결.</li>
           <li>외교부 서비스 대비 약 20% 높은 정확도(50개 여권 사진 테스트 기준).</li>
           <li>촬영부터 구청 방문 후 규정 검증까지 평균 8~10초로 단축.</li>
         </ul>
@@ -737,14 +737,14 @@
             TanStack Query, Zustand</li>
           <li><strong>Auth:</strong> JWT, OAuth (Google)</li>
           <li><strong>AI:</strong> LLM Fine-tuning (OpenAI, Vertex AI), Prompt Design</li>
-          <li><strong>UI &amp; UX:</strong> Figma, next-intl, PostCSS, react-hook-form, Recharts, styled-components,
-            Tailwind CSS</li>
+          <li><strong>UI &amp; UX:</strong> Figma, next-intl, PostCSS, react-hook-form, Recharts, react-word-cloud
+            , styled-components, Tailwind CSS</li>
           <li><strong>DevOps:</strong> AWS (learning), GitHub Actions (CI/CD)</li>
         </ul>
 
         <h3>Product Execution</h3>
         <ul class="list-dot">
-          <li>새 요구사항에서 재사용 가능한 로직을 우선하고 변경 범위를 최소화하는 방식으로 기획·구현.</li>
+          <li>새로운 요구사항이 있을 경우 재사용 가능한 로직을 우선 활용하고 변경 범위를 최소화하는 방식으로 기획·구현.</li>
           <li>요구사항을 구현하기 전 사용 맥락과 실제 흐름으로 문제를 재정의한 뒤 서비스 구조 설계.</li>
           <li>단기 실행 계획 수립, 개발·협업·안정화를 고려해 수주 내 해결 목표로 일정 조율.</li>
           <li>배포 후 피드백을 반영해 구조·인터페이스를 지속 개선.</li>
