@@ -21,12 +21,10 @@
     })();
   </script>
   <style>
-    /*
-     * 로컬에서 index.html 을 file:// 로만 열면 <use href="icons/…"> 가 차단되는 경우가 많음.
-     * 미리보려면 같은 폴더에서 npx serve . 등으로 http 로 띄우면 됨.
-     */
     :root {
       --font: "Pretendard Variable", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+      --resume-body: 0.92rem;
+      --resume-subtitle: 0.9rem;
     }
 
     html[data-theme="dark"] {
@@ -209,7 +207,7 @@
       position: relative;
       padding-left: 1.1rem;
       margin-bottom: 0.65rem;
-      font-size: 0.95rem;
+      font-size: var(--resume-body);
       line-height: 1.55;
     }
 
@@ -228,7 +226,7 @@
     }
 
     section {
-      margin-bottom: 2.75rem;
+      margin-bottom: 4rem;
     }
 
     section:last-of-type {
@@ -263,6 +261,20 @@
       margin-top: 0;
     }
 
+    h5 {
+      font-size: var(--resume-subtitle);
+      font-weight: 600;
+      color: var(--muted);
+      margin: 0 0 0.5rem;
+      line-height: 1.55;
+    }
+
+    #side-projects .entry h5,
+    #activities .entry h5 {
+      font-size: var(--resume-body);
+      color: var(--text);
+    }
+
     p {
       margin-bottom: 0.85rem;
       color: var(--text);
@@ -272,23 +284,29 @@
       margin-bottom: 0;
     }
 
-    /* 기간·날짜 한 줄 (타임라인) — 부제 톤 */
     .duration {
-      font-size: 0.85rem;
+      font-size: var(--resume-subtitle);
       color: var(--muted);
       margin-bottom: 0.75rem;
     }
 
-    /* 경력: 회사명 아래 직무 · 재직 기간 한 줄 */
     .role-line {
-      font-size: 0.85rem;
+      font-size: var(--resume-subtitle);
       color: var(--muted);
       margin-bottom: 0;
     }
 
+    section .entry p {
+      font-size: var(--resume-body);
+    }
+
+    section .entry p.duration,
+    section .entry p.role-line {
+      font-size: var(--resume-subtitle);
+    }
+
     .entry {
       margin-bottom: 2.5rem;
-      padding-bottom: 2.5rem;
     }
 
     .job-head>h3 {
@@ -308,7 +326,7 @@
     }
 
     .job-lead {
-      font-size: 0.92rem;
+      font-size: var(--resume-body);
       color: var(--muted);
       margin-bottom: 0.75rem;
     }
@@ -327,6 +345,7 @@
       margin-bottom: 1rem;
       padding-left: 0.35rem;
       color: var(--text);
+      font-size: var(--resume-body);
     }
 
     ol.list-num ul {
@@ -336,7 +355,7 @@
     ol.list-num ul li,
     .list-dot li {
       position: relative;
-      font-size: 0.92rem;
+      font-size: var(--resume-body);
       color: var(--muted);
     }
 
@@ -371,7 +390,7 @@
     table {
       width: 100%;
       border-collapse: collapse;
-      font-size: 0.88rem;
+      font-size: var(--resume-body);
       margin-top: 0.5rem;
     }
 
@@ -393,6 +412,11 @@
       color: var(--muted);
     }
 
+    .table-wrap th:last-child,
+    .table-wrap td:last-child {
+      white-space: nowrap;
+    }
+
     .table-wrap {
       overflow-x: auto;
       margin-bottom: 1.25rem;
@@ -404,7 +428,7 @@
 
     .table-caption,
     .skills-title {
-      font-size: 0.95rem;
+      font-size: var(--resume-subtitle);
       font-weight: 600;
       color: var(--text);
     }
@@ -433,8 +457,10 @@
       margin-bottom: 0;
     }
 
-    .title-row p {
+    section .entry .title-row p {
       margin-bottom: 0;
+      font-size: var(--resume-subtitle);
+      color: var(--muted);
     }
 
     footer {
@@ -529,17 +555,15 @@
               <ul>
                 <li>useEffect + Zustand 기반 수동 API 호출 구조에서 동일 요청 중복, AbortController 직접 관리, 분산된 isLoading 처리로 비동기 로직이 UI에
                   과도하게 결합되는 문제 발생.</li>
-                <li>서버 상태를 TanStack Query로 일원화하고 클라이언트 상태(Zustand)와 역할 분리. Suspense·ErrorBoundary로 로딩·에러 처리를 선언적으로 위임.
+                <li>서버 상태를 TanStack Query로 관리하고 클라이언트 상태(Zustand)와 역할 분리. Suspense·ErrorBoundary로 로딩·에러를 선언적으로 처리.
                 </li>
-                <li>데이터 fetching 책임을 컴포넌트 밖으로 분리해 보일러플레이트 제거, 로딩/에러/No Data 처리 통일 및 중복 요청 제어로 예측 가능한 비동기 흐름 확보.</li>
               </ul>
             </li>
             <li>
               <strong>API 변경에 강한 Type-Safe 프론트엔드 데이터 계층 설계</strong>
               <ul>
                 <li>초기 서비스 단계에서 API 스펙 변경이 잦아 UI 컴포넌트 수정 비용이 지속 발생.</li>
-                <li>API 응답과 UI 모델 decoupling을 위해 Service Layer에 데이터 변환 구조 설계.</li>
-                <li>API 인터페이스와 UI 모델 분리, TypeScript 기반 정적 분석 환경 강화.</li>
+                <li>API 응답을 Service Layer에서 변환하여 UI 모델과의 결합도를 낮추고, TypeScript 기반의 정적 타입 분석 강화.</li>
                 <li>API 스펙 변경 시 UI 코드 수정 범위 약 80% 단축(5개 파일 → 1개 파일), 유지보수 비용 축소 및 런타임 타입 오류 방지.</li>
               </ul>
             </li>
@@ -548,15 +572,15 @@
               <ul>
                 <li>AI 분석 특성상 최종 결과까지 평균 26.4초 소요, 장시간 Skeleton으로 사용자 이탈 문제 발생.</li>
                 <li>SSE 기반 단계별 데이터 스트림 규격 제안, 수신 데이터 단계별 Incremental Rendering 구현.</li>
-                <li>첫 유효 결과 노출 시점 약 80% 단축(26.4초 → 5.3초), 전체 결과 로드 전 콘텐츠 소비 가능한 UX.</li>
+                <li>첫 유효 결과 노출 시점 약 80% 단축, 전체 결과 로드 전 콘텐츠 소비 가능한 UX 달성.</li>
               </ul>
             </li>
             <li>
               <strong>AEO/GEO 분석 보고서 기능 설계 및 구현</strong>
               <ul>
-                <li>브랜드 AEO/GEO 정량 확인 요구를 발굴했으나 기존에는 데이터 추출·개인화 저장 로직 부재.</li>
-                <li>기능 정의부터 데이터 흐름 설계까지 주도, 인사이트 추출용 프롬프트 엔지니어링 및 Firebase 기반 사용자별 데이터 영속화 구현.</li>
-                <li>배포 후 전체 데모 문의의 80%가 해당 기능에 집중, 제품 차원의 핵심 가치로 자리매김.</li>
+                <li>브랜드 언급에 대한 AEO/GEO 보고서 니즈 발굴.</li>
+                <li>기능 정의부터 데이터 흐름 설계까지 주도, 텍스트 데이터 내 수치 및 인사이트 추출 로직 설계.</li>
+                <li>3개의 기업과 B2B 논의 중.</li>
               </ul>
             </li>
           </ol>
@@ -566,12 +590,12 @@
           <h4>BriefingHub Extension : SNS 및 커뮤니티 내 브랜드 인식 모니터링 확장 프로그램</h4>
           <ol class="list-num">
             <li>
-              <strong>브라우저 자원 활용을 통한 데이터 수집 비용 Zero화</strong>
+              <strong>브라우저 자원 활용을 통한 데이터 수집 비용 감소소</strong>
               <ul>
                 <li>SNS 모니터링 API 비용이 초기 유저 테스트 단계에서 비즈니스 확장 제약 요인으로 작용.</li>
                 <li>API 호출 대신 사용자 브라우저 자원을 활용하는 Chrome Extension 아키텍처 제안.</li>
                 <li>Manifest V3 기반 service worker와 content script 간 통신 구조 설계.</li>
-                <li>데이터 수집 운영 비용 100% 절감(Zero Cost), 기능 유지하며 시장성 검증 기반 마련.</li>
+                <li>데이터 수집 운영 비용 절감하며 시장성 검증 기반 마련.</li>
               </ul>
             </li>
             <li>
@@ -589,7 +613,7 @@
                 <li>탭 기반 스크래핑 중 탭 종료·확장 프로그램 중단 시 데이터 유실 및 리소스 누수.</li>
                 <li>Chrome Extension API로 확장 프로그램과 탭 생명주기 제어 모듈 설계.</li>
                 <li>비정상 종료 방어 및 자동 회수 로직으로 안정성 강화.</li>
-                <li>데이터 수집 성공률 개선 및 탭 자원 회수율 90% 이상 안정적 확보.</li>
+                <li>데이터 수집 성공률 개선 및 탭 자원 회수율 90% 이상 확보.</li>
               </ul>
             </li>
           </ol>
@@ -599,7 +623,6 @@
 
     <section id="side-projects">
       <h2>사이드 프로젝트</h2>
-
       <article class="entry">
         <h3>baby24</h3>
         <p class="duration">2025. 01. ~ 2025. 05.</p>
@@ -607,7 +630,7 @@
         <ul class="list-dot">
           <li>문제 정의: 별도 장비·모바일 알람 중심 설계로 양육자의 장애 유무 고려 부족 및 접근성 제약.</li>
           <li>WebRTC 기반 P2P 실시간 영상 전송 구조 설계 및 Flutter 앱 구현.</li>
-          <li>Firebase Realtime DB Signaling에서 Offer/Answer 동기화 지연·충돌 → Socket.IO 기반 단방향 Signaling Server로 재설계해 연결 안정성
+          <li>Firebase Realtime DB Signaling에서 Offer/Answer 동기화 지연·충돌 문제를 Socket.IO 기반 단방향 Signaling Server로 재설계해 연결 안정성
             확보.</li>
           <li>Vertex AI 연동 영상 스냅샷 기반 얼굴 감지 및 위기 알림 파이프라인 구축.</li>
           <li>위기 감지 이벤트 기반 Google Home API 연동으로 가정 내 스마트 디바이스 알림 채널 확장.</li>
@@ -627,9 +650,8 @@
         <h5>실시간 여권 사진 규정 검증 웹 서비스</h5>
         <ul class="list-dot">
           <li>문제 정의: 외교부 온라인 검증은 업로드 기반으로 실시간 피드백 불가, 사용 가능 사진 오검출 존재.</li>
-          <li>카메라 → Canvas → Base64 → Socket.IO → 서버 검증 → UI 체크리스트 단방향 데이터 흐름 설계.</li>
-          <li>서버 응답 배열 직접 정렬로 상태 불일치 → 불변성 기반 상태 관리로 개선.</li>
-          <li>Base64를 URL로 전달하며 414(URI Too Long) → Body/FormData 기반 전송으로 재설계.</li>
+          <li>서버 응답 배열 직접 정렬로 상태 불일치를 불변성 기반 상태 관리로 개선.</li>
+          <li>Base64를 URL로 전달하며 414(URI Too Long) 에러를 Body/FormData 기반 전송으로 재설계해 해결.</li>
           <li>외교부 서비스 대비 약 20% 높은 정확도(50개 여권 사진 테스트 기준).</li>
           <li>촬영부터 구청 방문 후 규정 검증까지 평균 8~10초로 단축.</li>
         </ul>
@@ -653,10 +675,10 @@
         <p class="duration">2024. 01. ~ 2024. 02.</p>
         <h5>Google Vertex AI 기반 문해력 향상 지원 웹 · Google Solution Challenge 출품</h5>
         <ul class="list-dot">
-          <li>문제 정의: 기존 문해력 평가는 단일 점수 제공으로 세부 약점 파악 한계.</li>
-          <li>점수를 6개 세부 영역으로 구분·시각화하는 설명 가능한 평가 UX.</li>
+          <li>문제 정의: 기존 문해력 평가는 N점과 같은 단일 점수로 세부 약점 파악 한계.</li>
+          <li>점수를 6개 세부 영역으로 구분·시각화하는 설명 가능한 평가 UX 설계.</li>
           <li>Vertex AI 프롬프트 설계·파인튜닝으로 평가 일관성 개선, 엔드포인트–서버 통신 구조 설계.</li>
-          <li>Stage 도메인 기준 구조 재정비 및 공통 컴포넌트 추출로 중복 UI 제거·코드 일관성 확보.</li>
+          <li>페이지 내 Stage별 공통 컴포넌트 추출로 중복 UI 제거·코드 일관성 확보.</li>
           <li>Path alias 및 strict TypeScript로 import 일관성·타입 안정성 확보.</li>
         </ul>
         <p class="tag-row">
@@ -686,15 +708,20 @@
           <li>SDGs 기반 사회 문제 해결을 위한 서비스 아키텍처 기획·설계·구현.</li>
         </ul>
       </article>
-
+      <article class="entry">
+        <h3>미래에셋박현주재단 해외교환파견 장학생</h3>
+        <p class="duration">2024. 04. ~ 2024. 08.</p>
+        <h5>30기</h5>
+        <ul class="list-dot">
+          <li>해외 대학 경험 및 장학생 네트워크 내 경험 공유.</li>
+          <li>독일 교환학생 과정 중 배운 내용을 공유하는 에세이 작성.</li>
+        </ul>
+      </article>
       <article class="entry">
         <h3>2023 숭실대학교 실리콘밸리 AI 온라인 인턴십 프로그램 2기</h3>
         <p class="duration">2023. 08. 28. ~ 2023. 08. 30.</p>
-        <h5>예측형 AI와 생성형 AI를 활용한 서비스 아이디어 기획</h5>
         <ul class="list-dot">
-          <li><a
-              href="https://scatch.ssu.ac.kr/%eb%89%b4%ec%8a%a4%ec%84%bc%ed%84%b0/%ec%a0%84%ec%b2%b4/?type=major-news&amp;slug=%EB%B3%B8%EA%B5%90-ai%EC%9C%B5%ED%95%A9%EC%97%B0%EA%B5%AC%EC%9B%90-2023-%EC%8B%A4%EB%A6%AC%EC%BD%98%EB%B0%B8%EB%A6%AC-ai%EC%98%A8%EB%9D%BC%EC%9D%B8-%EC%9D%B8%ED%84%B0%EC%8B%AD-%ED%94%84&f&amp;keyword"
-              target="_blank" rel="noopener noreferrer">2기 대표팀 선정</a></li>
+          <li>예측형 AI와 생성형 AI를 활용한 서비스 아이디어 기획</li>
         </ul>
       </article>
     </section>
@@ -703,27 +730,27 @@
       <h2>역량</h2>
 
       <div class="skills">
-        <p class="skills-title">Technology</p>
+        <h3>Technology</h3>
         <ul class="list-dot">
           <li><strong>Core:</strong> Next.js, React, TypeScript</li>
           <li><strong>State &amp; Data:</strong> Chrome Storage API, Context API, JWT, OAuth (Google), REST API,
             TanStack Query, Zustand</li>
           <li><strong>Auth:</strong> JWT, OAuth (Google)</li>
           <li><strong>AI:</strong> LLM Fine-tuning (OpenAI, Vertex AI), Prompt Design</li>
-          <li><strong>UI &amp; UX:</strong> Figma, next-intl, PostCSS, react-hook-form, Recharts, styled-components,
-            Tailwind CSS</li>
+          <li><strong>UI &amp; UX:</strong> Figma, next-intl, PostCSS, react-hook-form, Recharts, react-word-cloud
+            , styled-components, Tailwind CSS</li>
           <li><strong>DevOps:</strong> AWS (learning), GitHub Actions (CI/CD)</li>
         </ul>
 
-        <p class="skills-title">Product Execution</p>
+        <h3>Product Execution</h3>
         <ul class="list-dot">
-          <li>새 요구사항에서 재사용 가능한 로직을 우선하고 변경 범위를 최소화하는 방식으로 기획·구현.</li>
+          <li>새로운 요구사항이 있을 경우 재사용 가능한 로직을 우선 활용하고 변경 범위를 최소화하는 방식으로 기획·구현.</li>
           <li>요구사항을 구현하기 전 사용 맥락과 실제 흐름으로 문제를 재정의한 뒤 서비스 구조 설계.</li>
           <li>단기 실행 계획 수립, 개발·협업·안정화를 고려해 수주 내 해결 목표로 일정 조율.</li>
           <li>배포 후 피드백을 반영해 구조·인터페이스를 지속 개선.</li>
         </ul>
 
-        <p class="skills-title">Communication</p>
+        <h3>Communication</h3>
         <ul class="list-dot">
           <li>제안·아이디어를 Figma 목업과 API 데이터 구조를 포함한 문서로 정리해 공유.</li>
           <li>충분한 시도 후 질문하며, 질문 시 현재 상황·가설·목표를 정리해 공유.</li>
@@ -737,7 +764,7 @@
       <h2>자격 · 수상</h2>
 
       <div class="table-wrap">
-        <p class="table-caption">자격증</p>
+        <h3>자격증</h3>
         <table>
           <thead>
             <tr>
@@ -767,7 +794,7 @@
       </div>
 
       <div class="table-wrap">
-        <p class="table-caption">수상</p>
+        <h3>수상</h3>
         <table>
           <thead>
             <tr>
@@ -778,12 +805,14 @@
           </thead>
           <tbody>
             <tr>
-              <td>2021 숭실대학교 컴퓨터학부 소프트웨어 공모전, 금상</td>
+              <td>2021 숭실대학교 컴퓨터학부 소프트웨어 공모전, 금상
+              </td>
               <td>사용자 포즈 추정 AI 모델 및 웹앱(pwa) 페이지 개발</td>
               <td>2021. 08.</td>
             </tr>
             <tr>
-              <td>2022 클라우드 이노베이션 컨테스트 — 클라우드를 부탁해, 4등</td>
+              <td>2022 클라우드 이노베이션 컨테스트 - 클라우드를 부탁해, 4등
+              </td>
               <td>Google Apps Script·Workspace로 동아리 Student Office Service 웹 개발</td>
               <td>2022. 03.</td>
             </tr>
