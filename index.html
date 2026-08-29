@@ -290,6 +290,19 @@
         margin-bottom: 0;
       }
 
+      .project-info {
+        margin-bottom: 0.5rem;
+      }
+
+      .project-info p {
+        margin-bottom: 0.15rem;
+        color: var(--text);
+      }
+
+      .project-info p:last-child {
+        margin-bottom: 0;
+      }
+
       .duration {
         font-size: var(--resume-subtitle);
         color: var(--muted);
@@ -531,9 +544,9 @@
         </div>
         <h1>성나영</h1>
         <p class="lead">
-          Problem Solver with AI, Web
+          Problem Solver with AI & Web
           <br />
-          사용자에게 필요한 것은 무엇인가에서부터 시작하여 개발합니다.
+          사용자의 Pain Point에서 출발해, AI와 웹 기술로 업무 효율을 개선합니다.
         </p>
         <p class="contact">
           <a href="mailto:ny.seong.dev@gmail.com">ny.seong.dev@gmail.com</a>
@@ -592,57 +605,60 @@
         <article class="entry">
           <header class="job-head">
             <h3>NURIE AI (주)누리에에이아이</h3>
-            <p class="role-line">Software Engineer · 2025. 03. ~ 재직중</p>
+            <p class="role-line">Software Engineer · 2025. 03. ~ 재직 중</p>
           </header>
 
           <div class="job-segment">
             <h4>BriefingHub</h4>
+            <div class="project-info">
+              <p>AI 키워드 뉴스 분석 및 브랜드 AEO/GEO 모니터링 웹 플랫폼</p>
+              <p>일정 : 2025. 06. ~ 진행 중</p>
+              <p>기술 스택 : Next.js, React, TypeScript, Tailwind CSS, TanStack Query, Zustand, next-intl, GCP</p>
+              <p>참여 인원 및 기여도 : 2인, 60% (기획, 디자인, 개발)</p>
+              <p>역할 : 기획 및 프론트엔드 전담 개발</p>
+            </div>
             <ul class="list-dot">
               <li>
-                프론트엔드 전담, Next.js, React, TypeScript 기반 AI 키워드 뉴스
-                분석 및 브랜드 GEO/AEO 모니터링 웹 플랫폼 개발.
+                Zustand store과 useEffect 의존성 기반 데이터 fetch 구조에서 불필요한 뉴스 조회 API 호출 개선을 위해 TanStack Query로 서버 상태 분리, 호출 수 7 → 3회로 감소
+              </li>
+              <li>AI 뉴스 분석 결과 조회 시 장기간 로딩 UI가 노출되는 문제를 해결하기 위해 SSE 통신으로 변경 제안, 점진적 데이터 렌더링을 통해 첫 데이터 표시 시점 80% 단축</li>
+              <li>
+                AEO/GEO 모니터링을 위해 LLM 텍스트 응답에서 출처 특징, 브랜드 감성, 브랜드 특징 인사이트를 추출하고 시각화하는 차트 API 및 대시보드 개발
               </li>
               <li>
-                평균 26.4초가 소요되는 AI 분석 API를 SSE 기반 통신으로 변경
-                제안, 점진적 렌더링을 통해 초기 유효 결과 노출 시점을 80% 단축.
+                Lighthouse로 초기 화면 랜더 병목 지점 파악해 동적 import 분리, 로딩 UI DOM 트리 통합 등 개선, Performance 28점 향상
               </li>
               <li>
-                TanStack Query, Suspense, SSR, CSR 렌더링 분리 등을 도입해
-                Lighthouse 성능 지표 37% 향상 및 CLS·FCP·SEO 개선으로 사용자
-                경험 최적화.
-              </li>
-              <li>
-                LLM 응답에서 수치 인사이트 추출 로직 및 GEO/AEO 분석 결과 시각화
-                API 개발, Recharts, Word Cloud, 표 사용한 대시보드 개발.
-              </li>
-              <li>
-                GCP Firestore TTL 도입으로 인증 토큰 및 임시 데이터 관리를 위한
-                스케줄러 운영 비용 절감.
+                스케줄러 기반 임시 데이터 관리 로직을 GCP Firestore TTL로 변경해 운영 비용 절감
               </li>
             </ul>
           </div>
 
           <div class="job-segment">
             <h4>BriefingHub Extension</h4>
+            <div class="project-info">
+              <p>SNS 게시글 반응 모니터링 대시보드 Chrome Extension</p>
+              <p>일정 : 2025. 06. ~ 진행 중</p>
+              <p>기술 스택 : React, TypeScript, Chrome Extension Manifest V3, Vite, Tailwind CSS, Recharts, Cheerio</p>
+              <p>참여 인원 및 기여도 : 1인, 100% (기획, 디자인, 개발)</p>
+              <p>역할 : SNS 스크래퍼 및 모니터링 대시보드 개발</p>
+            </div>
             <ul class="list-dot">
-              <li>
-                SNS 및 커뮤니티 내 브랜드 인식 모니터링 대시보드 확장 프로그램
-                개발 전담.
-              </li>
+
               <li>
                 스크래퍼 개발 중 chrome://discards를 활용해 백그라운드 탭의
                 Visibility, Freeze 상태에 따른 DOM 로딩 제약 사항 파악, inactive
                 탭에서도 스크래핑이 정상 수행되도록 파이프라인 개선
               </li>
               <li>
-                주기마다 모든 스크래퍼에 이벤트를 보내 실행 타이밍을 개별
-                검증하던 Pub/Sub 구조를 Scheduler로 변경, 불필요한 이벤트 발행을
+                주기마다 모든 스크래퍼에 이벤트를 보내 실행 타이밍을 
+                확인하던 Pub/Sub 구조를 Scheduler로 변경, 불필요한 이벤트 발행을
                 없애고 스크래퍼별 개별 주기에 따라 동작하도록 개선
               </li>
               <li>
                 Chrome의 자동 백그라운드 탭 정리 및 Service Worker 종료로 인한
-                데이터 유실 발생, chrome.storage 기반의 상태 백업 및 자동 복구
-                로직을 구현해 데이터 유실 방지
+                데이터 유실 문제를 chrome.storage 기반의 상태 백업 및 자동 복구
+                로직을 구현해 해결
               </li>
             </ul>
           </div>
@@ -652,113 +668,84 @@
       <section id="side-projects">
         <h2>사이드 프로젝트</h2>
         <article class="entry">
-          <h3>baby24</h3>
-          <p class="duration">2025. 01. ~ 2025. 05.</p>
-          <h5>배리어 프리 영아기 수면 모니터링 앱</h5>
+          <h3>AEIO 공식 홈페이지</h3>
+          <div class="project-info">
+            <p>AI 실시간 피드백 얼굴 운동 앱 AEIO의 공식 홈페이지</p>
+            <p>일정 : 2026. 05. ~ 2026. 08.</p>
+            <p>기술 스택 : Next.js, React, TypeScript, Tailwind CSS, GSAP, Framer Motion, Three.js, Notion API, Vercel</p>
+            <p>참여 인원 및 기여도 : 1인, 100% (기획, 개발)</p>
+            <p>역할 : 기획 및 프론트엔드 개발</p>
+          </div>
           <ul class="list-dot">
-            <li>역할 : 서비스 기획, Flutter 앱, Signaling Server 개발</li>
             <li>
-              문제 정의: 장애 양육자가 육아를 위해 별도의 장비를 마련해야 하는
-              에로 사항 존재.
+              Notion API의 이미지 메타데이터 미제공 문제를 해결하기 위해 이미지
+              프록시 내 파일 헤더 파싱 로직을 구현, HEIC 렌더링 오류 해결 및
+              전송량 83% 경량화
             </li>
             <li>
-              WebRTC 기반 P2P 실시간 영상 전송 구조 설계 및 Flutter 앱 개발.
+              Three.js로 랜딩 히어로 3D 오브젝트 움직임 및 호버 인터랙션
+              애니메이션 구현
+            </li>
+            <li>
+              직접 계산한 이징 함수와 타이밍 상수 로직을 GSAP Timeline 기반
+              시퀀스로 리팩토링해 유지보수 효율성 확보
+            </li>
+          </ul>
+        </article>
+
+        <article class="entry">
+          <h3>baby24</h3>
+          <div class="project-info">
+            <p>배리어 프리 영아기 수면 모니터링 앱</p>
+            <p>일정 : 2025. 01. ~ 2025. 05.</p>
+            <p>기술 스택 : Flutter, Node.js, Socket.IO, WebRTC, Vertex AI</p>
+            <p>참여 인원 및 기여도 : 4인, 30% (기획, 개발)</p>
+            <p>역할 : 기획, Flutter 앱, Signaling Server 개발</p>
+          </div>
+          <ul class="list-dot">
+            <li>
+              목표 : 장애 양육자가 스마트폰으로 아기 수면 상태를 모니터링할 수 있는 AI 위기 감지 서비스
+            </li>
+            <li>
+              WebRTC 기반 P2P 실시간 영상 전송 구조 설계 및 Flutter 앱 개발
             </li>
             <li>
               Firebase Realtime DB Signaling에서 Offer/Answer 동기화 지연 및
-              충돌 문제 발생, Socket.IO 기반 단방향 Signaling Server로 재설계해
-              연결 안정성 확보.
+              충돌 문제 발생, Socket.IO 기반 Signaling Server로 재설계해
+              연결 안정성 확보
             </li>
             <li>
-              Vertex AI 연동 영상 스냅샷 기반 얼굴 감지 및 위기 알림 파이프라인
-              구축.
+              Vertex AI로 얼굴 감지 모델 튜닝 및 위기 알림 파이프라인 설계
             </li>
             <li>Google Solution Challenge 2025 출품</li>
           </ul>
-          <p class="tag-row">
-            <span class="tag">Flutter</span>
-            <span class="tag">Node.js</span>
-            <span class="tag">Socket.IO</span>
-            <span class="tag">Vertex AI</span>
-            <span class="tag">WebRTC</span>
-          </p>
         </article>
 
         <article class="entry">
           <h3>ai-pass</h3>
-          <p class="duration">2023. 09. ~ 2024. 12.</p>
-          <h5>실시간 여권 사진 규정 검증 웹 서비스</h5>
+          <div class="project-info">
+            <p>실시간 여권 사진 규정 검증 웹</p>
+            <p>일정 : 2023. 09. ~ 2024. 12.</p>
+            <p>기술 스택 : React, TypeScript, Socket.IO, Context API, styled-components, Turborepo, Vercel, GitHub Actions</p>
+            <p>참여 인원 및 기여도 : 5인, 20% (기획, 개발)</p>
+            <p>역할 : 기획, 프론트엔드 개발</p>
+          </div>
           <ul class="list-dot">
             <li>
-              역할 : 서비스 기획, React, TypeScript 기반 웹 프론트엔드 개발.
+              목표 : 기존 외교부 온라인 여권 검증보다 정확하게 검증하고 AI로 실시간 피드백을 제공하는 서비스
             </li>
             <li>
-              문제 정의: 기존 외교부 온라인 여권 검증은 사진 업로드 방식으로
-              실시간 피드백 불가, 사용 중인 여권 사진도 통과하지 못할 정도로
-              부정확.
-            </li>
-            <li>
-              Socket.IO를 통해 서버와 실시간(1초 이내 latency) 통신해 사용자
-              디바이스의 카메라 이미지 송출.
+              실시간 영상 이미지를 전송하기 위해 Socket.IO로 서버와 실시간 (1초 이내 latency) 통신 로직 개발
             </li>
             <li>
               Base64를 URL로 전달해 발생한 414 에러를 Body/FormData 기반
-              전송으로 변경해 해결.
+              전송으로 변경해 해결
             </li>
             <li>
-              외교부 서비스 대비 약 20% 높은 정확도(50개 여권 사진 테스트 기준).
+              외교부 서비스 대비 약 20% 높은 정확도 달성 (50개 여권 사진 테스트 기준)
             </li>
-            <li>촬영부터 구청 방문 후 규정 검증까지 평균 8~10초로 단축.</li>
+            <li>기존에 사진 촬영 후 구청 방문까지 필요했던 여권 사진 규정 검증을 집에서 평균 8~10초 만에 완료하도록 단축</li>
           </ul>
-          <p class="tag-row">
-            <span class="tag">axios</span>
-            <span class="tag">Context API</span>
-            <span class="tag">Figma</span>
-            <span class="tag">GitHub Actions</span>
-            <span class="tag">React</span>
-            <span class="tag">Socket.IO</span>
-            <span class="tag">styled-components</span>
-            <span class="tag">TypeScript</span>
-            <span class="tag">Turborepo</span>
-            <span class="tag">Vercel</span>
-            <span class="tag">Vite</span>
-          </p>
-        </article>
-
-        <article class="entry">
-          <h3>Litera-sea</h3>
-          <p class="duration">2024. 01. ~ 2024. 02.</p>
-          <h5>
-            Google Vertex AI 기반 문해력 향상 지원 웹 · Google Solution
-            Challenge 출품
-          </h5>
-          <ul class="list-dot">
-            <li>
-              문제 정의: 기존 문해력 평가는 N점과 같은 단일 점수로 세부 약점
-              파악 한계.
-            </li>
-            <li>
-              점수를 6개 세부 영역으로 구분·시각화하는 설명 가능한 평가 UX 설계.
-            </li>
-            <li>
-              Vertex AI 프롬프트 설계·파인튜닝으로 평가 일관성 개선,
-              엔드포인트–서버 통신 구조 설계.
-            </li>
-            <li>
-              페이지 내 Stage별 공통 컴포넌트 추출로 중복 UI 제거·코드 일관성
-              확보.
-            </li>
-            <li>
-              Path alias 및 strict TypeScript로 import 일관성·타입 안정성 확보.
-            </li>
-          </ul>
-          <p class="tag-row">
-            <span class="tag">Figma</span>
-            <span class="tag">React</span>
-            <span class="tag">styled-components</span>
-            <span class="tag">Vertex AI</span>
-            <span class="tag">Vite</span>
-          </p>
         </article>
       </section>
 
@@ -767,42 +754,45 @@
 
         <article class="entry">
           <h3>Google Developer Groups on Campus Soongsil</h3>
-          <p class="duration">2023. 09 ~ 2025. 09</p>
+          <p class="duration">2023. 09. ~ 2025. 09.</p>
           <h5>3기 AI/ML 파트 멤버 · 4기 DevRel</h5>
           <ul class="list-dot">
             <li>
               Next.js와 Notion API를 연동해 멤버 데이터 관리 CMS 로직 설계 및
-              공식 홈페이지 내 Member 페이지 개발.
+              공식 홈페이지 내 Member 페이지 개발
             </li>
             <li>
-              최신 기술 트렌드 공유, 성장을 목표로 스터디 기획·운영(NLP, IT 영어
-              회화).
+              최신 기술 트렌드 공유, 성장을 목표로 스터디 기획·운영 (NLP, IT 영어
+              회화)
             </li>
             <li>
               풀스택(FYT), CS 리마인드 스터디, Google Cloud Skill Boost 참여로
-              프론트엔드에서 백엔드, 인프라로 스킬 확장.
+              프론트엔드에서 백엔드, 인프라로 스킬 확장
             </li>
-            <li>세미나와 커뮤니티 이벤트 기획 및 운영.</li>
+            <li>세미나와 커뮤니티 이벤트 기획 및 운영</li>
           </ul>
-          <h5>Solution Challenge (2024, 2025)</h5>
+          <h5>Solution Challenge</h5>
           <ul class="list-dot">
             <li>
-              SDGs 기반 사회 문제 해결을 위한 서비스 아키텍처 기획 및 개발.
+              SDGs 기반 사회 문제 해결을 위한 서비스 기획 및 개발
+            </li>
+            <li>
+              2024년, 2025년 출품
             </li>
           </ul>
         </article>
         <article class="entry">
           <h3>미래에셋박현주재단 해외교환파견 장학생</h3>
           <p class="duration">2024. 04. ~ 2024. 08.</p>
-          <h5>30기</h5>
+          <h5>30기 장학생</h5>
           <ul class="list-dot">
-            <li>장학생 네트워크 MEET-UP에 참가해 AI 활용 인사이트 공유 .</li>
-            <li>독일 교환학생 과정 중 배운 내용을 공유하는 에세이 작성.</li>
+            <li>장학생 네트워크 MEET-UP에 참가해 AI 활용 인사이트 공유</li>
+            <li>독일 교환학생 과정 중 배운 내용을 공유하는 에세이 작성</li>
           </ul>
         </article>
         <article class="entry">
           <h3>2023 숭실대학교 실리콘밸리 AI 온라인 인턴십 프로그램 2기</h3>
-          <p class="duration">2023. 08. 28. ~ 2023. 08. 30.</p>
+          <p class="duration">2023. 08.</p>
           <ul class="list-dot">
             <li>예측형 AI와 생성형 AI를 활용한 서비스 아이디어 기획</li>
           </ul>
@@ -814,19 +804,20 @@
         <div class="skills">
           <h3>Technology</h3>
           <ul class="list-dot">
-            <li><strong>Core:</strong> Next.js, React, TypeScript</li>
+            <li><strong>Core:</strong> Next.js, React, TypeScript, Node.js (learning)</li>
             <li>
               <strong>State &amp; Data:</strong> Chrome Storage API, Context
               API, REST API, TanStack Query, Zustand
             </li>
             <li><strong>Auth:</strong> JWT, OAuth (Google)</li>
+            <li><strong>Payment:</strong> Payple</li>
             <li>
               <strong>AI:</strong> LLM Fine-tuning (OpenAI, Vertex AI), Prompt
-              Engineer
+              Engineering
             </li>
             <li>
               <strong>UI &amp; UX:</strong> Figma, next-intl, PostCSS,
-              react-hook-form, Recharts, react-word-cloud , styled-components,
+              react-hook-form, Recharts, react-word-cloud, styled-components,
               Tailwind CSS
             </li>
             <li>
@@ -837,35 +828,34 @@
           <h3>Product Execution</h3>
           <ul class="list-dot">
             <li>
-              새로운 요구사항이 있을 경우 재사용 가능한 로직을 기반으로 변경
-              범위를 최소화하는 방식으로 기획.
+              사용자의 pain point를 해결하기 위해 사용자 입장에서 업무를 수행해보고 불편한 지점을 찾아 요구사항에 반영
             </li>
             <li>
-              요구사항을 구현하기 전 사용 맥락을 중심으로 문제를 재정의 후
-              서비스 기능 설계.
+              개선이 필요한 부분을 발견하면 가설을 세우고 AI로 프로토타입을 빠르게 만들어 검증, 효과가 지표로 확인되면 다음 작업 일정으로 할당해 개선
             </li>
+            <li>새로운 기능을 제안할 때 유사 서비스 사례를 조사해 근거와 함께 제시</li>
           </ul>
 
           <h3>Communication</h3>
           <ul class="list-dot">
             <li>
               새로운 아이디어나 개선 사항을 Figma 목업과 API 데이터 구조를
-              포함한 문서로 정리해 공유.
+              포함한 문서로 정리해 팀원들에게 공유
             </li>
             <li>
-              충분한 시도 후 질문하며, 질문 시 목표, 가설, 현재 상황, 시도한
-              내용을 정리해 공유.
+              질문을 하기 전 충분히 시도하고, 질문 시 상황, 목표, 가설, 시도한
+              내용을 정리해 공유
             </li>
             <li>
-              디자이너와 협업 시 화면,UX 맥락과 함께 구현 시 제약 사항 설명.
+              디자이너와 협업 시 화면, UX 맥락과 함께 구현 시 제약 사항 설명
             </li>
-            <li>글로벌 협업 경험.</li>
+            <li>교환학생 중 여러 국가의 학생들과 글로벌 협업 경험</li>
           </ul>
         </div>
       </section>
 
       <section id="certs">
-        <h2>자격 · 수상</h2>
+        <h2>자격증 · 수상</h2>
 
         <div class="table-wrap">
           <h3>자격증</h3>
@@ -873,7 +863,7 @@
             <thead>
               <tr>
                 <th>이름</th>
-                <th>점수</th>
+                <th>점수 / 등급</th>
                 <th>일시</th>
               </tr>
             </thead>
@@ -932,7 +922,10 @@
         <h2>학력</h2>
 
         <article class="entry">
-          <h3>숭실대학교</h3>
+          <div class="title-row">
+            <h3>숭실대학교</h3>
+            <p>Seoul, South Korea</p>
+          </div>
           <p class="duration">2020. 03. ~ 2026. 02.</p>
           <p>소프트웨어학부 (학사) · 융합전공: 빅데이터</p>
           <p>학점 3.97 / 4.5</p>
@@ -942,11 +935,11 @@
             <h3>Technical University of Braunschweig</h3>
             <p>Braunschweig, Germany</p>
           </div>
-          <p class="duration">2024. 04. 01. ~ 2024. 08. 23.</p>
-          <p>Informatik (Computer Science), Bachelor</p>
-          <p>학점 2.35 / 1.0 (1.0 = Very Good, 5.0 = Fail)</p>
+          <p class="duration">2024. 04. ~ 2024. 08.</p>
+          <p>교환학생 : Informatik (Computer Science), Bachelor</p>
+          <p>학점 2.35 (1.0 = Very Good, 5.0 = Fail)</p>
           <ul class="list-dot">
-            <li>Introduction of Machine Learning</li>
+            <li>Introduction to Machine Learning</li>
             <li>Pattern Recognition (Master)</li>
           </ul>
         </article>
@@ -955,7 +948,7 @@
             <h3>University of Southern California</h3>
             <p>Los Angeles, CA, U.S.</p>
           </div>
-          <p class="duration">2023. 07. 02. ~ 2023. 07. 29.</p>
+          <p class="duration">2023. 07.</p>
           <p>숭실대 스파르탄교육원 및 USC 주관 SW Summit Camp 글로벌 연수</p>
           <ul class="list-dot">
             <li>Data Science &amp; Artificial Intelligence</li>
