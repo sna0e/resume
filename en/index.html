@@ -1,0 +1,533 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="dark light" />
+    <meta
+      name="description"
+      content="Nayoung Seong · Resume and Portfolio"
+    />
+    <link rel="icon" href="../icons/favicon.ico" type="image/x-icon" />
+    <link rel="canonical" href="https://sna0e.github.io/resume/en/" />
+    <link rel="alternate" hreflang="ko" href="https://sna0e.github.io/resume/" />
+    <link
+      rel="alternate"
+      hreflang="en"
+      href="https://sna0e.github.io/resume/en/"
+    />
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href="https://sna0e.github.io/resume/"
+    />
+    <title>Nayoung Seong · Resume &amp; Portfolio</title>
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem("theme");
+          if (t !== "light" && t !== "dark") {
+            t = window.matchMedia("(prefers-color-scheme: dark)").matches
+              ? "dark"
+              : "light";
+          }
+          document.documentElement.setAttribute("data-theme", t);
+        } catch (e) {
+          document.documentElement.setAttribute("data-theme", "dark");
+        }
+      })();
+    </script>
+    <link rel="stylesheet" href="../assets/style.css" />
+  </head>
+
+  <body>
+    <div class="page">
+      <header>
+        <div class="masthead">
+          <p class="eyebrow">Resume / Portfolio</p>
+          <div class="masthead__tools">
+            <a
+              class="lang-switch"
+              id="lang-switch"
+              href="../"
+              hreflang="ko"
+              lang="ko"
+              aria-label="한국어로 보기"
+              >KO</a
+            >
+            <div class="theme-picker" role="group" aria-label="Color theme">
+              <div class="theme-picker__switch">
+                <button
+                  type="button"
+                  id="theme-btn-light"
+                  class="theme-picker__btn"
+                  aria-pressed="false"
+                  aria-label="Light mode"
+                >
+                  <svg
+                    class="theme-picker__icon"
+                    width="18"
+                    height="18"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <use href="../icons/theme-icons.svg#theme-sun" />
+                  </svg>
+                </button>
+                <button
+                  type="button"
+                  id="theme-btn-dark"
+                  class="theme-picker__btn"
+                  aria-pressed="true"
+                  aria-label="Dark mode"
+                >
+                  <svg
+                    class="theme-picker__icon"
+                    width="18"
+                    height="18"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <use href="../icons/theme-icons.svg#theme-moon" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+                <h1>Nayoung Seong</h1>
+        <p class="lead">Problem Solver with AI &amp; Web</p>
+        <p class="summary">
+          Software engineer at an AI-native software startup. I gather
+          requirements directly from clients, then plan, design, build, and
+          operate the product.
+        </p>
+        <p class="contact">
+          <a href="mailto:ny.seong.dev@gmail.com">ny.seong.dev@gmail.com</a>
+          |
+          <a
+            href="https://github.com/sna0e"
+            target="_blank"
+            rel="noopener noreferrer"
+            >GitHub</a
+          >
+          |
+          <a
+            href="https://www.linkedin.com/in/nayoungs/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >LinkedIn</a
+          >
+          |
+          <a
+            href="https://sna0e.tistory.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Blog</a
+          >
+        </p>
+
+        <nav aria-label="Section navigation">
+          <a href="#experience">Experience</a>
+          <a href="#side-projects">Side Projects</a>
+          <a href="#activities">Activities</a>
+          <a href="#skills">Skills</a>
+          <a href="#certs">Certifications &amp; Awards</a>
+          <a href="#education">Education</a>
+        </nav>
+      </header>
+
+      <section id="experience">
+        <h2>Experience</h2>
+        <article class="entry">
+          <header class="job-head">
+            <h3>NURIE AI</h3>
+            <p class="meta-line">
+              <span>Software Engineer</span><span>Mar 2025 – Present</span>
+            </p>
+          </header>
+
+          <div class="job-segment">
+            <h4>BriefingHub</h4>
+            <p class="meta-line">
+              <span>Planning, design, frontend</span><span>Jun 2025 – Present</span>
+            </p>
+            <p>
+              Platform for AI keyword news analysis and brand AEO/GEO (Answer
+              &amp; Generative Engine Optimization) monitoring.
+            </p>
+            <div class="tag-row">
+              <span class="tag">Next.js</span><span class="tag">React</span
+              ><span class="tag">TypeScript</span
+              ><span class="tag">Tailwind CSS</span
+              ><span class="tag">TanStack Query</span
+              ><span class="tag">Zustand</span
+              ><span class="tag">next-intl</span><span class="tag">GCP</span>
+            </div>
+            <ul class="list-dot">
+              <li>
+                Delivered the platform from planning through operation, landing
+                a <strong>major Korean insurer</strong> as an enterprise client.
+              </li>
+              <li>
+                Reduced time to first result by <strong>80%</strong> by
+                proposing and shipping SSE streaming for AI analysis results,
+                replacing a long blocking spinner with progressive rendering.
+              </li>
+              <li>
+                Built the chart APIs and dashboard behind AEO/GEO monitoring,
+                extracting source characteristics, brand sentiment, and brand
+                attributes from LLM responses and visualizing them.
+              </li>
+              <li>
+                Cut redundant news API calls <strong>7 → 3</strong> by moving
+                server state off a Zustand/useEffect fetch layer onto TanStack
+                Query.
+              </li>
+              <li>
+                Raised Lighthouse Performance <strong>+28</strong> by
+                splitting dynamic imports and flattening the loading UI's DOM after profiling bottlenecks in the initial render.
+              </li>
+              <li>
+                Lowered operating cost by moving temporary data cleanup from a
+                scheduler to GCP Firestore TTL.
+              </li>
+            </ul>
+          </div>
+
+          <div class="job-segment">
+            <h4>BriefingHub Extension</h4>
+            <p class="meta-line">
+              <span>Planning, design, development</span><span>Jun 2025 – Present</span>
+            </p>
+            <p>
+              Chrome extension dashboard for monitoring engagement on social
+              media posts.
+            </p>
+            <div class="tag-row">
+              <span class="tag">React</span><span class="tag">TypeScript</span
+              ><span class="tag">Chrome Extension MV3</span
+              ><span class="tag">Vite</span
+              ><span class="tag">Tailwind CSS</span
+              ><span class="tag">Recharts</span><span class="tag">Cheerio</span>
+            </div>
+            <ul class="list-dot">
+              <li>
+                Ensured scraping continued in inactive tabs by diagnosing how Visibility and Freeze states limit DOM loading in background tabs with <code>chrome://discards</code> and rebuilding the pipeline
+                around them.
+              </li>
+              <li>
+                Eliminated data loss from Chrome's tab discarding and Service
+                Worker termination by backing state up to
+                <code>chrome.storage</code> and restoring it automatically.
+              </li>
+              <li>
+              Migrated scraper triggering from a Pub/Sub broadcast that
+              fired at every scraper each cycle to a Scheduler, so each runs
+              on its own interval without redundant events.
+              </li>
+            </ul>
+          </div>
+        </article>
+      </section>
+
+      <section id="side-projects">
+        <h2>Side Projects</h2>
+
+        <article class="entry">
+          <h3>AEIO Official Website</h3>
+          <p class="meta-line">
+            <span>Planning, frontend</span><span>May 2026 – Aug 2026</span>
+          </p>
+          <p>
+            Marketing site for AEIO, a facial exercise app with real-time AI
+            feedback.
+          </p>
+          <div class="tag-row">
+            <span class="tag">Next.js</span><span class="tag">TypeScript</span
+            ><span class="tag">Tailwind CSS</span><span class="tag">GSAP</span
+            ><span class="tag">Framer Motion</span
+            ><span class="tag">Three.js</span
+            ><span class="tag">Notion API</span><span class="tag">Vercel</span>
+          </div>
+          <ul class="list-dot">
+            <li>
+              Cut image transfer <strong>83%</strong> and resolved HEIC
+              rendering errors by parsing file headers inside an image proxy,
+              working around the Notion API's missing image metadata.
+            </li>
+            <li>
+              Developed the landing hero's 3D object motion and hover
+              interactions in Three.js.
+            </li>
+            <li>
+            Refactored custom easing functions and timing constants into
+            GSAP Timeline sequences for maintainability.
+            </li>
+          </ul>
+        </article>
+
+        <article class="entry">
+          <h3>baby24</h3>
+          <p class="meta-line">
+            <span>Planning, Flutter app, signaling server</span><span>Jan 2025 – May 2025</span>
+          </p>
+          <p>
+            Infant sleep monitor designed for accessibility, with AI crisis detection
+            so caregivers with disabilities can watch their baby's sleep from a
+            phone. Google Solution Challenge 2025 entry.
+          </p>
+          <div class="tag-row">
+            <span class="tag">Flutter</span><span class="tag">Node.js</span
+            ><span class="tag">Socket.IO</span><span class="tag">WebRTC</span
+            ><span class="tag">Vertex AI</span>
+          </div>
+          <ul class="list-dot">
+            <li>
+              Designed the WebRTC P2P live video pipeline and built the Flutter
+              app.
+            </li>
+            <li>
+              Stabilized connections by rebuilding signaling on a Socket.IO
+              server after Firebase Realtime DB signaling caused Offer/Answer
+              sync delays and conflicts.
+            </li>
+            <li>
+            Tuned a face detection model on Vertex AI and designed the
+            crisis alert pipeline.
+            </li>
+          </ul>
+        </article>
+
+        <article class="entry">
+          <h3>ai-pass</h3>
+          <p class="meta-line">
+            <span>Planning, frontend</span><span>Sep 2023 – Dec 2024</span>
+          </p>
+          <p>
+            Real-time passport photo compliance checker with live AI feedback,
+            built to outperform the online photo validator run by Korea's
+            Ministry of Foreign Affairs.
+          </p>
+          <div class="tag-row">
+            <span class="tag">React</span><span class="tag">TypeScript</span
+            ><span class="tag">Socket.IO</span
+            ><span class="tag">Context API</span
+            ><span class="tag">styled-components</span
+            ><span class="tag">Turborepo</span><span class="tag">Vercel</span
+            ><span class="tag">GitHub Actions</span>
+          </div>
+          <ul class="list-dot">
+            <li>
+              Achieved <strong>20% higher accuracy</strong> than the Ministry of
+              Foreign Affairs validator across 50 test photos, cutting a check
+              that previously required a visit to a district office down to 8–10
+              seconds at home.
+            </li>
+            <li>
+              Implemented sub-second real-time frame streaming to the server
+              over Socket.IO.
+            </li>
+            <li>
+            Resolved 414 errors by moving Base64 payloads out of the URL
+            into Body/FormData.
+            </li>
+          </ul>
+        </article>
+      </section>
+
+      <section id="activities">
+        <h2>Activities</h2>
+
+        <article class="entry">
+          <h3>Google Developer Groups on Campus Soongsil</h3>
+          <p class="meta-line">
+            <span>AI/ML member (3rd cohort), DevRel (4th cohort)</span><span>Sep 2023 – Sep 2025</span>
+          </p>
+          <ul class="list-dot">
+            <li>
+              Shipped the Member page on the official site and designed the CMS for member data on Next.js + Notion API.
+            </li>
+            <li>
+              Planned and ran study groups (NLP, Technical English) and
+              community seminars.
+            </li>
+            <li>
+              Expanded from frontend into backend and infrastructure through
+              full-stack and CS study groups and Google Cloud Skills Boost.
+            </li>
+            <li>
+              <strong>Solution Challenge:</strong> planned and built services
+              addressing UN SDG problems; entered 2024 and 2025.
+            </li>
+          </ul>
+        </article>
+
+        <article class="entry">
+          <h3>Mirae Asset Foundation Global Exchange Scholarship</h3>
+          <p class="meta-line">
+            <span>30th cohort</span><span>Apr 2024 – Aug 2024</span>
+          </p>
+          <ul class="list-dot">
+            <li>
+              Full scholarship from a major Korean corporate foundation for a
+              semester abroad at TU Braunschweig.
+            </li>
+            <li>
+              Shared insights on adopting AI at the scholar network meetup and
+              wrote an essay on the exchange.
+            </li>
+          </ul>
+        </article>
+      </section>
+
+      <section id="skills">
+        <h2>Skills</h2>
+        <div class="skills">
+          <h3>Technology</h3>
+          <ul class="list-dot">
+            <li><strong>Core:</strong> Next.js, React, TypeScript</li>
+            <li>
+              <strong>State &amp; Data:</strong> TanStack Query, Zustand,
+              Context API, REST API, Chrome Storage API
+            </li>
+            <li>
+              <strong>AI:</strong> LLM fine-tuning (OpenAI, Vertex AI), prompt
+              engineering
+            </li>
+            <li>
+              <strong>UI &amp; UX:</strong> Figma, Tailwind CSS,
+              styled-components, PostCSS, next-intl, react-hook-form, Recharts,
+              react-word-cloud
+            </li>
+            <li>
+              <strong>Auth &amp; Payment:</strong> JWT, OAuth (Google), Payple
+              (Korean payment gateway)
+            </li>
+            <li><strong>DevOps:</strong> GitHub Actions (CI/CD)</li>
+            <li><strong>Currently learning:</strong> Node.js, AWS</li>
+          </ul>
+
+          <h3>Product Execution</h3>
+          <ul class="list-dot">
+            <li>
+              I weigh technology, user experience, and business context together
+              when I build.
+            </li>
+            <li>
+              I do the user's job myself to find the friction firsthand, then
+              turn it into requirements.
+            </li>
+            <li>
+              I validate improvements as quick prototypes built with AI, and schedule
+              the real work once metrics confirm the effect.
+            </li>
+            <li>
+              I use AI to get up to speed on unfamiliar territory fast, so a
+              domain I haven't worked in doesn't stop me from taking the
+              problem.
+            </li>
+            <li>
+              I back feature proposals with research on comparable products.
+            </li>
+          </ul>
+
+          <h3>Communication</h3>
+          <ul class="list-dot">
+            <li>
+              I share new ideas as written docs with Figma mockups and API data
+              structures.
+            </li>
+            <li>
+              I ask questions with the situation, goal, hypothesis, and what I
+              already tried.
+            </li>
+            <li>
+              I give designers implementation constraints alongside screen and
+              UX context.
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="certs">
+        <h2>Certifications &amp; Awards</h2>
+
+        <h3>Awards</h3>
+        <ul class="list-dot">
+          <li>
+            <strong>Gold Prize</strong>, Soongsil University School of Computer
+            Science Software Contest · Sep 2021<br />Pose estimation AI model
+            and web app
+          </li>
+          <li>
+            <strong>4th place</strong>, Cloud Innovation Contest · Apr
+            2022<br />Student office service web app on Google Apps Script +
+            Workspace
+          </li>
+        </ul>
+
+        <h3 class="skills-title">Certifications</h3>
+        <ul class="list-dot">
+          <li>Engineer Information Processing · Sep 2026</li>
+          <li>SQL Developer · Jun 2026</li>
+          <li>TOEIC Speaking · 160 / Advanced Low · Jun 2025</li>
+        </ul>
+      </section>
+
+      <section id="education">
+        <h2>Education</h2>
+
+        <article class="entry">
+          <div class="title-row">
+            <h3>Soongsil University</h3>
+            <p>Seoul, South Korea</p>
+          </div>
+          <p class="duration">Mar 2020 – Feb 2026</p>
+          <p>B.S. in Software · Interdisciplinary major: Big Data</p>
+          <p>GPA 3.97 / 4.5</p>
+        </article>
+
+        <article class="entry">
+          <div class="title-row">
+            <h3>Technical University of Braunschweig</h3>
+            <p>Braunschweig, Germany</p>
+          </div>
+          <p class="duration">Apr 2024 – Aug 2024</p>
+          <p>Exchange semester : Informatik (Computer Science), Bachelor</p>
+          <p>Grade 2.35 (1.0 = best, 5.0 = fail)</p>
+          <ul class="list-dot">
+            <li>Introduction to Machine Learning</li>
+            <li>Pattern Recognition (Master's)</li>
+            <li>
+              Collaborated on coursework with students from several countries
+            </li>
+          </ul>
+        </article>
+
+        <article class="entry">
+          <div class="title-row">
+            <h3>University of Southern California</h3>
+            <p>Los Angeles, CA, U.S.</p>
+          </div>
+          <p class="duration">Jul 2023</p>
+          <p>
+            SW Summit Camp global program hosted with Soongsil's Spartan
+            Education Center
+          </p>
+          <ul class="list-dot">
+            <li>Data Science &amp; Artificial Intelligence</li>
+            <li>
+              Southern California Korean American Software Pioneer Hackathon
+            </li>
+          </ul>
+        </article>
+      </section>
+
+      <footer>
+        © <span id="y"></span> · Nayoung Seong (sna0e) · GitHub Pages
+      </footer>
+    </div>
+    <script src="../assets/theme.js"></script>
+  </body>
+</html>

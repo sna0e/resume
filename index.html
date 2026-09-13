@@ -6,6 +6,18 @@
     <meta name="color-scheme" content="dark light" />
     <meta name="description" content="성나영 · 이력서 및 포트폴리오" />
     <link rel="icon" href="./icons/favicon.ico" type="image/x-icon" />
+    <link rel="canonical" href="https://sna0e.github.io/resume/" />
+    <link rel="alternate" hreflang="ko" href="https://sna0e.github.io/resume/" />
+    <link
+      rel="alternate"
+      hreflang="en"
+      href="https://sna0e.github.io/resume/en/"
+    />
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href="https://sna0e.github.io/resume/"
+    />
     <title>성나영 · 이력서 & 포트폴리오</title>
     <script>
       (function () {
@@ -22,480 +34,7 @@
         }
       })();
     </script>
-    <style>
-      :root {
-        --font:
-          "Pretendard Variable", "Apple SD Gothic Neo", "Malgun Gothic",
-          sans-serif;
-        --resume-body: 0.92rem;
-        --resume-subtitle: 0.9rem;
-      }
-
-      html[data-theme="dark"] {
-        color-scheme: dark;
-        --bg: #0f1419;
-        --text: #e8eaed;
-        --muted: #9aa5b1;
-        --link: #7eb8f0;
-        --link-hover: #a8d4ff;
-        --accent: #fafcff;
-        --accent-soft: rgba(69, 212, 214, 0.14);
-        --border: rgba(255, 255, 255, 0.08);
-        --th-bg: rgba(255, 255, 255, 0.04);
-      }
-
-      html[data-theme="light"] {
-        color-scheme: light;
-        --bg: #f2f5f9;
-        --text: #141a21;
-        --muted: #556070;
-        --link: #1567c4;
-        --link-hover: #0e5199;
-        --accent: #153348;
-        --accent-soft: rgba(21, 51, 72, 0.1);
-        --border: rgba(0, 0, 0, 0.1);
-        --th-bg: rgba(0, 0, 0, 0.05);
-      }
-
-      * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-      }
-
-      html {
-        scroll-behavior: smooth;
-        cursor: default;
-      }
-
-      body {
-        font-family: var(--font);
-        background: var(--bg);
-        color: var(--text);
-        line-height: 1.65;
-        font-size: 16px;
-        min-height: 100vh;
-      }
-
-      a {
-        color: var(--link);
-        text-decoration: none;
-      }
-
-      a:hover {
-        color: var(--link-hover);
-        text-decoration: underline;
-      }
-
-      .page {
-        max-width: 760px;
-        margin: 0 auto;
-        padding: 3rem 1.5rem 4rem;
-      }
-
-      header {
-        margin-bottom: 2.5rem;
-      }
-
-      .masthead {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        justify-content: space-between;
-        gap: 0.65rem 1rem;
-        margin-bottom: 0.75rem;
-      }
-
-      .theme-picker {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        gap: 0.5rem 0.75rem;
-      }
-
-      .theme-picker__switch {
-        display: inline-flex;
-        border: 1px solid var(--border);
-        border-radius: 8px;
-        overflow: hidden;
-      }
-
-      .theme-picker__btn {
-        font: inherit;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        width: 2.35rem;
-        height: 2.35rem;
-        padding: 0;
-        border: none;
-        background: transparent;
-        color: var(--muted);
-        cursor: pointer;
-        transition:
-          background 0.15s ease,
-          color 0.15s ease;
-      }
-
-      .theme-picker__btn svg.theme-picker__icon {
-        flex-shrink: 0;
-        pointer-events: none;
-        display: block;
-      }
-
-      .theme-picker__btn:hover {
-        color: var(--text);
-        background: var(--accent-soft);
-      }
-
-      .theme-picker__btn[aria-pressed="true"] {
-        background: var(--accent-soft);
-        color: var(--accent);
-        font-weight: 600;
-      }
-
-      .eyebrow {
-        display: inline-block;
-        margin-bottom: 0;
-        font-size: 0.75rem;
-        letter-spacing: 0.06em;
-        text-transform: uppercase;
-        color: var(--muted);
-      }
-
-      h1 {
-        font-size: clamp(1.75rem, 4vw, 2.25rem);
-        font-weight: 700;
-        letter-spacing: -0.02em;
-        margin-bottom: 0.5rem;
-      }
-
-      .lead {
-        color: var(--muted);
-        font-size: 1.05rem;
-        margin-bottom: 1.25rem;
-      }
-
-      .contact {
-        display: flex;
-        gap: 0.75rem;
-        margin-bottom: 1.25rem;
-        font-size: 0.92rem;
-        color: var(--muted);
-      }
-
-      nav {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.65rem 1.1rem;
-      }
-
-      nav a {
-        font-size: 0.88rem;
-        color: var(--muted);
-      }
-
-      nav a:hover {
-        color: var(--link-hover);
-      }
-
-      .principles {
-        margin-bottom: 1.5rem;
-      }
-
-      .principles-list,
-      ul.list-dot,
-      ol.list-num ul {
-        list-style: none;
-      }
-
-      .principles-list > li {
-        position: relative;
-        padding-left: 1.1rem;
-        margin-bottom: 0.65rem;
-        font-size: var(--resume-body);
-        line-height: 1.55;
-      }
-
-      .principles-list > li:last-child,
-      ol.list-num > li:last-child {
-        margin-bottom: 0;
-      }
-
-      .principles-list > li::before,
-      ol.list-num ul li::before,
-      .list-dot li::before {
-        content: "·";
-        position: absolute;
-        left: 0;
-        color: var(--accent);
-      }
-
-      section {
-        margin-bottom: 4rem;
-      }
-
-      section:last-of-type {
-        margin-bottom: 0;
-      }
-
-      h2 {
-        font-size: 1.25rem;
-        font-weight: 600;
-        color: var(--accent);
-        margin-bottom: 1rem;
-        letter-spacing: -0.01em;
-      }
-
-      h3,
-      h4 {
-        font-weight: 600;
-        color: var(--text);
-      }
-
-      h3 {
-        font-size: 1.02rem;
-        margin-bottom: 0.35rem;
-      }
-
-      h4 {
-        font-size: 0.98rem;
-        margin: 1.25rem 0 0.5rem;
-      }
-
-      h4:first-child {
-        margin-top: 0;
-      }
-
-      h5 {
-        font-size: var(--resume-subtitle);
-        font-weight: 600;
-        color: var(--muted);
-        margin: 0 0 0.5rem;
-        line-height: 1.55;
-      }
-
-      #side-projects .entry h5,
-      #activities .entry h5 {
-        font-size: var(--resume-body);
-        color: var(--text);
-      }
-
-      p {
-        margin-bottom: 0.85rem;
-        color: var(--text);
-      }
-
-      p:last-child {
-        margin-bottom: 0;
-      }
-
-      .project-info {
-        margin-bottom: 0.5rem;
-      }
-
-      .project-info p {
-        margin-bottom: 0.15rem;
-        color: var(--text);
-      }
-
-      .project-info p:last-child {
-        margin-bottom: 0;
-      }
-
-      .duration {
-        font-size: var(--resume-subtitle);
-        color: var(--muted);
-        margin-bottom: 0.75rem;
-      }
-
-      .role-line {
-        font-size: var(--resume-subtitle);
-        color: var(--muted);
-        margin-bottom: 0;
-      }
-
-      section .entry p {
-        font-size: var(--resume-body);
-      }
-
-      section .entry p.duration,
-      section .entry p.role-line {
-        font-size: var(--resume-subtitle);
-      }
-
-      .entry {
-        margin-bottom: 2.5rem;
-      }
-
-      .job-head > h3 {
-        margin-bottom: 0.25rem;
-      }
-
-      .job-head > .role-line {
-        margin-bottom: 0;
-      }
-
-      .job-segment {
-        margin-top: 1.85rem;
-      }
-
-      .job-segment:first-of-type {
-        margin-top: 0.85rem;
-      }
-
-      .job-lead {
-        font-size: var(--resume-body);
-        color: var(--muted);
-        margin-bottom: 0.75rem;
-      }
-
-      .job-segment .list-dot + .job-lead {
-        margin-top: 1rem;
-      }
-
-      ol.list-num {
-        list-style: decimal;
-        padding-left: 1.35rem;
-        margin: 0.5rem 0 0;
-      }
-
-      ol.list-num > li {
-        margin-bottom: 1rem;
-        padding-left: 0.35rem;
-        color: var(--text);
-        font-size: var(--resume-body);
-      }
-
-      ol.list-num ul {
-        margin: 0.45rem 0 0;
-      }
-
-      ol.list-num ul li,
-      .list-dot li {
-        position: relative;
-        font-size: var(--resume-body);
-        color: var(--muted);
-      }
-
-      ol.list-num ul li {
-        padding-left: 1rem;
-        margin-bottom: 0.4rem;
-      }
-
-      .list-dot li {
-        padding-left: 1.1rem;
-        margin-bottom: 0.55rem;
-      }
-
-      ul.list-dot {
-        margin: 0.5rem 0 0;
-      }
-
-      .tag-row {
-        margin-top: 0.65rem;
-      }
-
-      .tag {
-        display: inline-block;
-        background: var(--accent-soft);
-        color: var(--accent);
-        font-size: 0.78rem;
-        padding: 0.18rem 0.5rem;
-        border-radius: 999px;
-        margin: 0 0.35rem 0.35rem 0;
-      }
-
-      table {
-        width: 100%;
-        border-collapse: collapse;
-        font-size: var(--resume-body);
-        margin-top: 0.5rem;
-      }
-
-      th,
-      td {
-        border: 1px solid var(--border);
-        padding: 0.55rem 0.65rem;
-        text-align: left;
-        vertical-align: top;
-      }
-
-      th {
-        background: var(--th-bg);
-        color: var(--muted);
-        font-weight: 600;
-      }
-
-      td {
-        color: var(--muted);
-      }
-
-      .table-wrap th:last-child,
-      .table-wrap td:last-child {
-        white-space: nowrap;
-      }
-
-      .table-wrap {
-        overflow-x: auto;
-        margin-bottom: 1.25rem;
-      }
-
-      .table-wrap:last-child {
-        margin-bottom: 0;
-      }
-
-      .table-caption,
-      .skills-title {
-        font-size: var(--resume-subtitle);
-        font-weight: 600;
-        color: var(--text);
-      }
-
-      .table-caption {
-        margin-bottom: 0.5rem;
-      }
-
-      .skills-title {
-        margin: 1rem 0 0.5rem;
-      }
-
-      .skills-title:first-child {
-        margin-top: 0;
-      }
-
-      .title-row {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: baseline;
-        gap: 0.35rem 0.75rem;
-        margin-bottom: 0.35rem;
-      }
-
-      .title-row h3 {
-        margin-bottom: 0;
-      }
-
-      section .entry .title-row p {
-        margin-bottom: 0;
-        font-size: var(--resume-subtitle);
-        color: var(--muted);
-      }
-
-      footer {
-        margin-top: 3rem;
-        padding-top: 2rem;
-        border-top: 1px solid var(--border);
-        font-size: 0.85rem;
-        color: var(--muted);
-        text-align: center;
-      }
-
-      strong {
-        font-weight: 600;
-        color: var(--text);
-      }
-    </style>
+    <link rel="stylesheet" href="./assets/style.css" />
   </head>
 
   <body>
@@ -503,42 +42,53 @@
       <header>
         <div class="masthead">
           <p class="eyebrow">Resume / Portfolio</p>
-          <div class="theme-picker" role="group" aria-label="화면 테마">
-            <div class="theme-picker__switch">
-              <button
-                type="button"
-                id="theme-btn-light"
-                class="theme-picker__btn"
-                aria-pressed="false"
-                aria-label="라이트 모드"
-              >
-                <svg
-                  class="theme-picker__icon"
-                  width="18"
-                  height="18"
-                  aria-hidden="true"
-                  focusable="false"
+          <div class="masthead__tools">
+            <a
+              class="lang-switch"
+              id="lang-switch"
+              href="./en/"
+              hreflang="en"
+              lang="en"
+              aria-label="View in English"
+              >EN</a
+            >
+            <div class="theme-picker" role="group" aria-label="화면 테마">
+              <div class="theme-picker__switch">
+                <button
+                  type="button"
+                  id="theme-btn-light"
+                  class="theme-picker__btn"
+                  aria-pressed="false"
+                  aria-label="라이트 모드"
                 >
-                  <use href="icons/theme-icons.svg#theme-sun" />
-                </svg>
-              </button>
-              <button
-                type="button"
-                id="theme-btn-dark"
-                class="theme-picker__btn"
-                aria-pressed="true"
-                aria-label="다크 모드"
-              >
-                <svg
-                  class="theme-picker__icon"
-                  width="18"
-                  height="18"
-                  aria-hidden="true"
-                  focusable="false"
+                  <svg
+                    class="theme-picker__icon"
+                    width="18"
+                    height="18"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <use href="./icons/theme-icons.svg#theme-sun" />
+                  </svg>
+                </button>
+                <button
+                  type="button"
+                  id="theme-btn-dark"
+                  class="theme-picker__btn"
+                  aria-pressed="true"
+                  aria-label="다크 모드"
                 >
-                  <use href="icons/theme-icons.svg#theme-moon" />
-                </svg>
-              </button>
+                  <svg
+                    class="theme-picker__icon"
+                    width="18"
+                    height="18"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <use href="./icons/theme-icons.svg#theme-moon" />
+                  </svg>
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -546,7 +96,7 @@
         <p class="lead">
           Problem Solver with AI & Web
           <br />
-          사용자의 Pain Point에서 출발해, AI와 웹 기술로 업무 효율을 개선합니다.
+          사용자의 Pain Point에서 출발해, AI와 웹 기술로 문제를 해결합니다.
         </p>
         <p class="contact">
           <a href="mailto:ny.seong.dev@gmail.com">ny.seong.dev@gmail.com</a>
@@ -869,6 +419,11 @@
             </thead>
             <tbody>
               <tr>
+                <td>정보처리기사</td>
+                <td>-</td>
+                <td>2026. 09.</td>
+              </tr>
+              <tr>
                 <td>SQLD</td>
                 <td>개발자</td>
                 <td>2026. 06.</td>
@@ -961,45 +516,6 @@
 
       <footer>© <span id="y"></span> · 성나영 (sna0e) · GitHub Pages</footer>
     </div>
-    <script>
-      document.getElementById("y").textContent = new Date().getFullYear();
-
-      (function () {
-        function applyTheme(theme) {
-          if (theme !== "light" && theme !== "dark") return;
-          document.documentElement.setAttribute("data-theme", theme);
-          try {
-            localStorage.setItem("theme", theme);
-          } catch (e) {}
-          var lightBtn = document.getElementById("theme-btn-light");
-          var darkBtn = document.getElementById("theme-btn-dark");
-          if (lightBtn && darkBtn) {
-            lightBtn.setAttribute(
-              "aria-pressed",
-              theme === "light" ? "true" : "false",
-            );
-            darkBtn.setAttribute(
-              "aria-pressed",
-              theme === "dark" ? "true" : "false",
-            );
-          }
-        }
-
-        applyTheme(
-          document.documentElement.getAttribute("data-theme") || "dark",
-        );
-
-        var btnLight = document.getElementById("theme-btn-light");
-        var btnDark = document.getElementById("theme-btn-dark");
-        if (btnLight)
-          btnLight.addEventListener("click", function () {
-            applyTheme("light");
-          });
-        if (btnDark)
-          btnDark.addEventListener("click", function () {
-            applyTheme("dark");
-          });
-      })();
-    </script>
+    <script src="./assets/theme.js"></script>
   </body>
 </html>
